@@ -10,9 +10,9 @@ Made by React / TypeScript / Node.js / MongoDB
 - Course Design
   - TagsBar: Edit the tags to change the course prompt result
     - TagBox: props - tag("select/input"),
-  - InfoBox
+  - ViewBox
     - UserBox: Get the information of users
-    - ViewBox: Show the result of prompting
+    - CourseBox: Show the result of prompting
 - My Course
 
 ### Page Data Design
@@ -39,6 +39,11 @@ Made by React / TypeScript / Node.js / MongoDB
 ### Dependencies
 
 ## Backend and Database
+
+
+# Development Process
+1. 5.11 - Structure Design(data & page component)
+2. 5.12 - Build course design framework
 
 
 # Problem and Solution

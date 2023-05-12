@@ -1,20 +1,17 @@
+import { CourseHome } from "./pages/CourseHome/CourseHome";
+import styled from "styled-components";
+import { useEffect } from "react";
+import "antd/dist/reset.css";
+import "./App.css";
 
-//import './App.css';
-import { CourseHome } from './pages/CourseHome/CourseHome';
-import styled from 'styled-components';
-import { useEffect } from 'react';
 
 export default function App() {
-
   useEffect(() => {
-    console.log(styled)
-  })  
+    console.log(styled);
+  });
   return (
     <div className="App">
-      <CourseHome/>
+      <CourseHome />
     </div>
   );
 }
-
-
-
