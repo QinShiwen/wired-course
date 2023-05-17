@@ -2,34 +2,17 @@ import styled from "styled-components";
 
 interface TagBoxProps {
   key: any;
-  tag: string;
   caption: string;
   information: any;
   changeInfo: (value:any,index:number) => void;
 }
 
-export function TagBox({ key, tag, caption, information, changeInfo }: TagBoxProps) {
-  const Option = (
-    <select value={information?.value} onChange={(e)=>changeInfo(e.target.value,key)}>
-      {information.choice?.map((item: string, index: number) => (
-        <option key={index} value={item} >
-          {item}
-        </option>
-      ))}
-    </select>
-  );
-
-  const Input = <input type="text" value={information} onChange={(e)=>changeInfo(e.target.value,key)} />;
-
-  const tagsType: { [key: string]: JSX.Element } = {
-    option: Option,
-    input: Input,
-  };
+export function TagBox({ key, caption, information, changeInfo }: TagBoxProps) {
 
   return (
     <Container>
       <div>{caption}</div>
-      <div>{tagsType[tag]}</div>
+      <input type="text" value={information} onChange={(e)=>changeInfo(e.target.value,key)} />
     </Container>
   );
 }

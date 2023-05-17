@@ -1,21 +1,17 @@
 import styled from "styled-components";
 import { TagsBar } from "./TagsBar";
 import { ViewBox } from "./ViewBox";
+import { CourseProvider, useCourseContext } from "./useCourseContext";
 
 interface CourseDesignProps {}
-
-
-const pagedata = {
-  account: {},
-  tagsinfo: [],
-  courseinfo: {},
-};
 
 export function CourseDesign() {
   return (
     <Container>
-      <TagsBar />
-      <ViewBox />
+      <CourseProvider>
+        <TagsBar />
+        <ViewBox />
+      </CourseProvider>
     </Container>
   );
 }

@@ -4,6 +4,7 @@ import { MyCourse } from "./MyCourse";
 import { NavBar } from "./components/NavBar";
 import styled from "styled-components";
 
+
 interface CourseHomeProps {}
 
 const routesInfo = [
@@ -19,26 +20,32 @@ const routesInfo = [
 
 export function CourseHome() {
   return (
-    <Router>
-      <Container>
-        <NavBar />
-        <div className="nav-view">
-          <Routes>
-            { routesInfo.map((route,index) => (
-                <Route key={index} path={route.path} element={<route.component />} />
-            ))}
-          </Routes>
-        </div>
-      </Container>
-    </Router>
+    <>
+        <Router>
+          <Container>
+            <NavBar />
+            <div className="nav-view">
+              <Routes>
+                {routesInfo.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={<route.component />}
+                  />
+                ))}
+              </Routes>
+            </div>
+          </Container>
+        </Router>
+    </>
   );
 }
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    .nav-view{
-        width: 100%;
-    }
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  .nav-view {
+    width: 100%;
+  }
 `;

@@ -9,7 +9,7 @@ Made by React / TypeScript / Node.js / MongoDB
 - Router Bar
 - Course Design
   - TagsBar: Edit the tags to change the course prompt result
-    - TagBox: props - tag("select/input"),
+    - TagBox: Single tag (Concept/grade/target/questions)
   - ViewBox
     - UserBox: Get the information of users
     - CourseBox: Show the result of prompting
@@ -42,13 +42,16 @@ Made by React / TypeScript / Node.js / MongoDB
 
 
 # Development Process
-1. 5.11 - Structure Design(data & page component)
-2. 5.12 - Build course design framework
-
+1. 5.11 - Structure Design(data & page component). 
+2. 5.12 - Build course design framework.
+3. 5.16 - Prompting LLM model to get the data. 
+4. 5.17 - Learn & Create useContext to store the shared information such as course data and tags. 
+5. 5.18 - Make the data show with markdown effect. 
 
 # Problem and Solution
 ## Moduale and Installation
 1. styled-components - can't find module. But I have installed by using the order npm i @types/styled-components --save
+- Solution: React版本升级导致不兼容styled-components。
 2. 尝试读取TS obj元素，但是给我以下错误：元素隐式具有 "any" 类型，因为类型为 "string" 的表达式不能用于索引类型 "{ "1": Element; }"。
 - Solution: 在 tagsType 对象的类型声明中，将索引类型由字符串改为 number，以匹配 tag 变量的类型。
 ```JS
