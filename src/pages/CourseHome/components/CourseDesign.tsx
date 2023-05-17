@@ -1,23 +1,26 @@
-
-
 import styled from "styled-components";
 import { TagsBar } from "./TagsBar";
 import { ViewBox } from "./ViewBox";
 
-interface CourseDesignProps {
+interface CourseDesignProps {}
 
-}
 
-export function CourseDesign(){
-    return (
-        <Container>
-            <TagsBar />
-            <ViewBox />
-        </Container>
-    );
+const pagedata = {
+  account: {},
+  tagsinfo: [],
+  courseinfo: {},
+};
+
+export function CourseDesign() {
+  return (
+    <Container>
+      <TagsBar />
+      <ViewBox />
+    </Container>
+  );
 }
 
 const Container = styled.div`
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 `;
