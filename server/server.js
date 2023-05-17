@@ -10,7 +10,7 @@ app.use(express.json());
 async function gptfetch(request) {
   console.log("request", request);
 
-  const Authorization = `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`;
+  const Authorization = ``;
 
   const response = await axios.post(
     "https://api.openai.com/v1/chat/completions",
