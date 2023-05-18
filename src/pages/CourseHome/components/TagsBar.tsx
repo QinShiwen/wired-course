@@ -1,7 +1,7 @@
 import { TagBox } from "./TagBox";
 import styled from "styled-components";
 import { Space } from "antd";
-import { useCourseContext } from "./useCourseContext";
+import { useCourseContext } from "../../../context/useCourseContext";
 
 export function TagsBar() {
   const { tags, fetchCourse, changeInfo } = useCourseContext();

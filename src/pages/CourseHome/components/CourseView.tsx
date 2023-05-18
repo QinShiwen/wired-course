@@ -1,4 +1,4 @@
-import { useCourseContext } from "./useCourseContext";
+import { useCourseContext } from "../../../context/useCourseContext";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 

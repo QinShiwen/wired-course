@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { TagsBar } from "./TagsBar";
 import { ViewBox } from "./ViewBox";
-import { CourseProvider, useCourseContext } from "./useCourseContext";
+import { CourseProvider, useCourseContext } from "../../../context/useCourseContext";
 
 interface CourseDesignProps {}
 

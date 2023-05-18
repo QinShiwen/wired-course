@@ -2,24 +2,14 @@
 
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const routes = [
-  {
-    path: "/course-design",
-    name: "设计课程",
-  },
-  {
-    path: "/my-course",
-    name: "我的课程",
-  },
-];
+import { routesInfo } from "../../CourseHome";
 
 export function NavBar() {
   return (
     <Container>
-      {routes.map((route,index) => (
+      {routesInfo.map((route,index) => (
         <div key = {index}>
-            <Link to={route.path}>{route.name}</Link>
+            <Link to={`/coursehome${route.path}`}>{route.name}</Link>
         </div>
         )
       )}

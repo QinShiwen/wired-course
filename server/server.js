@@ -42,7 +42,7 @@ app.post("/prompt-course", async(req, res) => {
   const grade = "课程年级：" + tags.grade+"。";
   const target = "课程目标：" + tags.target+"。";
   const questions = "课程驱动性问题：" + tags.questions+"。";
-  const request = guidewords + concept + grade + target + questions + "  请给出Markdown格式的课程大纲。";
+  const request = guidewords + concept + grade + target + questions + "  请给出Markdown格式的课程教学方案。";
   let data = await gptfetch(request);
   console.log("data",data);
   res.json({res:data});

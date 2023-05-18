@@ -14,7 +14,18 @@ Made by React / TypeScript / Node.js / MongoDB
     - UserBox: Get the information of users
     - CourseBox: Show the result of prompting
 - My Course
+- Start From: get the information that teacher input at the begining 
+  - From
+    - Title
+    - Input
+    - Introduction
+    - Next
+  - Image
+```js
+[
 
+]
+```
 ### Page Data Design
 ```js
 {
@@ -59,3 +70,4 @@ const tagsType: { [key: number]: JSX.Element } = {
   "option": Option,
 };
 ``` 
+3. 调用gpt-3.5-turbo接口回复速度慢问题。
