@@ -9,7 +9,7 @@ export function NavBar() {
     <Container>
       {routesInfo.map((route,index) => (
         <div key = {index}>
-            <Link to={`/coursehome${route.path}`}>{route.name}</Link>
+            <Link to={route.path}>{route.name}</Link>
         </div>
         )
       )}

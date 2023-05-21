@@ -6,13 +6,16 @@ import React, {
   useState,
 } from "react";
 import axios from "axios";
-
+import { pagesdata } from "../pages/startform/StartForm";
+import { NumberLiteralType } from "typescript";
 interface CourseContextValue {
   tags: Tags;
   courseinfo: any;
   coursestate: boolean;
+  slide: number;
   fetchCourse: () => void;
   changeInfo: (value: any, key: string) => void;
+  nextSlide: (slidenum:number) => any;
 }
 
 interface Tags {
@@ -45,7 +48,7 @@ const useCourseContext = () => {
   };
 };
 
-const CourseProvider: FC<{ children: ReactElement[] }> = (props) => {
+const CourseProvider = (props:any) => {
   const [tags, setTags] = useState<Tags>({
     concept: {
       caption: "请输入您的课程大概念",
@@ -64,9 +67,15 @@ const CourseProvider: FC<{ children: ReactElement[] }> = (props) => {
       information: "如果大树倒了，会砸到我们的教学楼吗？",
     },
   });
+
   const [courseinfo, setCourseinfo] = useState<any>(null);
+
   //显示状态：备课中 - 课件已生成
   const [coursestate, setCoursestate] = useState<boolean>(false);
+
+  //选课件页面的滑动
+  const [slide, setSlide] = useState<number>(0);
+
   async function fetchCourse() {
     setCoursestate(()=>false);
     const response = await axios
@@ -85,7 +94,6 @@ const CourseProvider: FC<{ children: ReactElement[] }> = (props) => {
   }
 
   function changeInfo(value: any, key: string) {
-    //console.log(value);
     setTags((prevTagsInfo: any) => ({
       ...prevTagsInfo,
       [key as keyof typeof prevTagsInfo]: {
@@ -93,16 +101,28 @@ const CourseProvider: FC<{ children: ReactElement[] }> = (props) => {
         information: value,
       },
     }));
-    //console.log(tags);
+  }
+
+  function nextSlide(slidenum:number) {
+    console.log(slidenum,pagesdata.length-1);
+    if(slidenum!==pagesdata.length-1){
+      setSlide(slide=>slide+1);
+    }else{
+      window.location.href = "/coursehome/*";
+    }
+   return  1;
   }
 
   const contextValue: CourseContextValue = {
     tags,
     courseinfo,
     coursestate,
+    slide,
     fetchCourse,
     changeInfo,
+    nextSlide
   };
+  
   return <CourseContext.Provider value={contextValue} {...props} />;
 };
 

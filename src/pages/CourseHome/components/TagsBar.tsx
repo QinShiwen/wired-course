@@ -27,6 +27,7 @@ export function TagsBar() {
 }
 
 const Container = styled.div`
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,8 +39,22 @@ const Container = styled.div`
     margin-top: 2rem;
   }
 
+  textarea {
+    caret-color: #6396f6;
+  }
+
   button {
-    width: 10rem;
-    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 150px;
+    height: 48px;
+    justify-content: center;
+    border: none;
+    background: #6396f7;
+    box-shadow: 0px 20px 50px rgba(46, 46, 46, 0.05);
+    border-radius: 47px;
+    color: #ffffff;
+    cursor: pointer;
   }
 `;

@@ -36,9 +36,8 @@ Made by React / TypeScript / Node.js / MongoDB
     pageData:{  //Each page has related page data
         tags:[{
             caption:string  // tell users the input
-            tagtype:string  //select or input
             taginfo:any  //if it is select => ... ;if it is input, show text 
-        }]
+        }...]
     }
 }
 ```
@@ -46,6 +45,30 @@ Made by React / TypeScript / Node.js / MongoDB
 - Input filter tags
 - Generate the course outline
 - Edit the tags anytime
+
+### Course data
+```TS
+[
+  {
+    leadin:"" //课程导入
+    target:"" //教学目标
+  },
+  { 
+    techingsteps:""  //教学方案和步骤
+  },
+  {
+    accessment:""  //评估与展示
+  }
+]
+/*
+请以小学三年级数学老师的身份，设计一堂PBL课程，课程大纲概念：发散数学思维鼓励孩子想出不同的数学测量方法；课程内容：测量一棵树的高度；驱动性问题：如果大树倒了，会砸到我们的教学楼吗？回答的内容请包涵：课程导入，教学目标、具体教学方案和步骤、评估与展示，请返回装着markdown文本的数组，如下所示：['给出课程导入与教学目标', '给出教学方案和步骤',  '给出评估与展示' ]
+*/
+[
+  "", //课程导入与教学目标
+  "", //教学方案和步骤
+  "" //评估与展示
+]
+```
 
 ### Dependencies
 
@@ -58,6 +81,8 @@ Made by React / TypeScript / Node.js / MongoDB
 3. 5.16 - Prompting LLM model to get the data. 
 4. 5.17 - Learn & Create useContext to store the shared information such as course data and tags. 
 5. 5.18 - Make the data show with markdown effect. 
+6. 5.19 - Css调整
+7. 5.20&21 - 为生成结果划分区域显示
 
 # Problem and Solution
 ## Moduale and Installation
