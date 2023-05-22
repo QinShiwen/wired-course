@@ -34,25 +34,26 @@ app.get("/", (req, res) => {
 });
 
 
-/**
- * 
- * 
- * 
- */
+app.post("/prompt-extend", async(req, res) => {
+  const content = req.body.content;
+  const request = `请帮我扩展以下内容并返回类似的markdown格式的文本：`+content;
+  let data = await gptfetch(request);
+  console.log("data",data);
+  res.json({res:data});
+});
 
 app.post("/prompt-course", async(req, res) => {
   //console.log(req.body)
   const tags = req.body;
-  /*
-  const guidewords =
-    "PBL教学法的核心思想是通过引入实际生活中的问题和挑战，让学生在实践中探索和解决问题，并在此过程中获取知识和技能，提升学生思辨思维。教师的角色变为指导者和辅导者，鼓励学生积极参与学习过程，帮助学生制定解决问题的计划和策略，提供必要的资源和支持，促进学生之间的合作和讨论。在PBL教学法中，驱动性问题具有挑战性又贴近生活，学生需要主动探索，得到自己的答案，而不是老师简单地传授知识。请帮我设计一个PBL课程，以下是我的要求：";
-  const concept = "课程大概念：" + tags.concept+"。";
-  const grade = "课程年级：" + tags.grade+"。";
+  const concept = `课程大概念：` + tags.concept+`。`;
+  const grade = `课程年级：` + tags.grade+"。";
   const target = "课程目标：" + tags.target+"。";
   const questions = "课程驱动性问题：" + tags.questions+"。";
-  const request = guidewords + concept + grade + target + questions + "  请给出Markdown格式的课程教学方案。";
-  */
-  const request = "请以小学三年级数学老师的身份，设计一堂PBL课程，课程大纲概念：发散数学思维鼓励孩子想出不同的数学测量方法；课程内容：测量一棵树的高度；驱动性问题：如果大树倒了，会砸到我们的教学楼吗？请返回装着markdown文本的json文件：{part1:课程导入与教学目标,part2:教学方案和步骤, part3:评估与展示}";
+  const request = `我是一名小学老师，请帮我设计一堂PBL课程。以下是我的`
+                  +concept+grade+target+questions+
+                  `请返回装着markdown文本的json文件：{part1:课程导入,part2:教学目标,part3:教学方案,part4:教学步骤, part5:评估与展示}`;
+  //const request = `请以小学三年级数学老师的身份，设计一堂PBL课程，课程大纲概念：发散数学思维鼓励孩子想出不同的数学测量方法；课程内容：测量一棵树的高度；驱动性问题：如果大树倒了，会砸到我们的教学楼吗？请返回装着markdown文本的json文件：{part1:课程导入,part2:教学目标,part3:教学方案,part4:教学步骤, part5:评估与展示}`;
+  
   let data = await gptfetch(request);
   console.log("data",data);
   res.json({res:data});

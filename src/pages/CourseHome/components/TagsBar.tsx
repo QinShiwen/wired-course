@@ -13,6 +13,7 @@ export function TagsBar() {
           Object.entries(tags).map(([key, tagInfo]) => (
             <TagBox
               key={key}
+              tagnum = {key}
               caption={tagInfo.caption}
               information={tagInfo.information}
               changeInfo={(value) => changeInfo(value, key)}

@@ -1,29 +1,24 @@
 import styled from "styled-components";
 import { useEffect } from "react";
+import { Input } from "antd";
 interface TagBoxProps {
-  key: any;
+  tagnum: any;
   caption: string;
   information: any;
   changeInfo: (value: any, index: number) => void;
 }
 
-export function TagBox({ key, caption, information, changeInfo }: TagBoxProps) {
-  useEffect(() => {
-    const textarea = document.querySelector("textarea");
-
-    textarea?.addEventListener("input", function () {
-      this.style.height = "auto";
-      this.style.height = this.scrollHeight + "px";
-    });
-  });
+export function TagBox({ tagnum, caption, information, changeInfo }: TagBoxProps) {
+  const { TextArea } = Input;
 
   return (
     <Container>
       <div className="tag-caption">{caption}</div>
       <div className="tag-info">
-        <textarea
+        <TextArea
+          autoSize
           value={information}
-          onChange={(e) => changeInfo(e.target.value, key)}
+          onChange={(e) => changeInfo(e.target.value, tagnum)}
         />
       </div>
     </Container>
@@ -52,27 +47,13 @@ const Container = styled.div`
     border-radius: 16px;
   }
 
-  .tag-info {
-    width: 12rem;
-    max-height: 10rem;
-    overflow-y: auto;
+  textarea {
     background: #ffffff;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
-  }
-
-  textarea {
-    overflow: hidden;
-    wrap:virtual;
-    width: 100%;
-    height: auto;
-    border: none;
-    outline: none;
-    resize: auto;
-    padding: 10px;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    background: transparent;
+    border-radius: 10px;
+    width: 12rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    resize: none;
   }
 `;

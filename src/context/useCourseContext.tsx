@@ -15,7 +15,8 @@ interface CourseContextValue {
   slide: number;
   fetchCourse: () => void;
   changeInfo: (value: any, key: string) => void;
-  nextSlide: (slidenum:number) => any;
+  extendCourse: (content: string) => void;
+  nextSlide: (slidenum: number) => any;
 }
 
 interface Tags {
@@ -48,7 +49,7 @@ const useCourseContext = () => {
   };
 };
 
-const CourseProvider = (props:any) => {
+const CourseProvider = (props: any) => {
   const [tags, setTags] = useState<Tags>({
     concept: {
       caption: "请输入您的课程大概念",
@@ -77,7 +78,7 @@ const CourseProvider = (props:any) => {
   const [slide, setSlide] = useState<number>(0);
 
   async function fetchCourse() {
-    setCoursestate(()=>false);
+    setCoursestate(() => false);
     const response = await axios
       .post("http://localhost:5000/prompt-course", {
         concept: tags.concept.information,
@@ -88,9 +89,31 @@ const CourseProvider = (props:any) => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(response);
-    setCourseinfo(response?.data.res);
-    setCoursestate(()=>true);
+    console.log(response?.data.res);
+    //处理JSON文件中的换行符
+    let coursedata = JSON.parse(response?.data.res)
+    console.log(coursedata);
+    setCourseinfo(() => coursedata);
+    setCoursestate(() => true);
+  }
+
+  async function extendCourse(part:string) {
+    console.log(part, courseinfo[part],typeof(courseinfo[part]));
+    
+    const response = await axios
+      .post("http://localhost:5000/prompt-extend", {
+        part: part,
+        content: courseinfo[part],
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(response);  
+
+    setCourseinfo((prevCourseinfo:any) => ({
+      ...prevCourseinfo,
+      [part]: response?.data.res,
+    }));
   }
 
   function changeInfo(value: any, key: string) {
@@ -103,14 +126,14 @@ const CourseProvider = (props:any) => {
     }));
   }
 
-  function nextSlide(slidenum:number) {
-    console.log(slidenum,pagesdata.length-1);
-    if(slidenum!==pagesdata.length-1){
-      setSlide(slide=>slide+1);
-    }else{
+  function nextSlide(slidenum: number) {
+    console.log(slidenum, pagesdata.length - 1);
+    if (slidenum !== pagesdata.length - 1) {
+      setSlide((slide) => slide + 1);
+    } else {
       window.location.href = "/coursehome/*";
     }
-   return  1;
+    return 1;
   }
 
   const contextValue: CourseContextValue = {
@@ -120,9 +143,10 @@ const CourseProvider = (props:any) => {
     slide,
     fetchCourse,
     changeInfo,
-    nextSlide
+    extendCourse,
+    nextSlide,
   };
-  
+
   return <CourseContext.Provider value={contextValue} {...props} />;
 };
 
