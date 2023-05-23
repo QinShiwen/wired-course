@@ -35,9 +35,13 @@ Made by React / TypeScript / Node.js / MongoDB
     }],
     pageData:{  //Each page has related page data
         tags:[{
-            caption:string  // tell users the input
-            taginfo:any  //if it is select => ... ;if it is input, show text 
-        }...]
+            caption:string,  // tell users the input
+            information:string
+        }...],
+        courseinfo:{  //or null
+          part1...
+          part2...
+        }
     }
 }
 ```
@@ -47,22 +51,7 @@ Made by React / TypeScript / Node.js / MongoDB
 - Edit the tags anytime
 
 ### Course data
-```TS
-[
-  {
-    leadin:"" //课程导入
-    target:"" //教学目标
-  },
-  { 
-    techingsteps:""  //教学方案和步骤
-  },
-  {
-    accessment:""  //评估与展示
-  }
-]
-/*
-
-*/
+```JS
 //部分划分
 {
   part1:"",   //课程导入
@@ -84,9 +73,9 @@ Made by React / TypeScript / Node.js / MongoDB
 4. 5.17 - Learn & Create useContext to store the shared information such as course data and tags. 
 5. 5.18 - Make the data show with markdown effect. 
 6. 5.19 - Css调整
-7. 5.20&21 - 为生成结果划分区域
+7. 5.20&21 - 为生成结果划分6个区域
 8. 5.22 - 实现为每一个区域的生成结果实现拓展功能
-
+9. 5.23 修正UI（拖拽+伸缩）
 # Problem and Solution
 ## Moduale and Installation
 1. styled-components - can't find module. But I have installed by using the order npm i @types/styled-components --save

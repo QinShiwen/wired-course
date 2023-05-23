@@ -8,10 +8,6 @@ export function CourseView() {
   const { courseinfo, coursestate } = useCourseContext();
   const [showButton, setShowButton] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log(courseinfo);
-  });
-
   return (
     <Container>
       {courseinfo && Object.keys(courseinfo).map((content, key) => {

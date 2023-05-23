@@ -5,7 +5,7 @@ import {
   CourseProvider,
   useCourseContext,
 } from "../../../context/useCourseContext";
-import SplitPane, { Pane } from "react-split-pane";
+
 
 interface CourseDesignProps {}
 
@@ -19,6 +19,7 @@ export function CourseDesign() {
     </Container>
   );
 }
+
 
 const Container = styled.div`
   display: flex;
