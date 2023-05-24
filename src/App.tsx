@@ -8,6 +8,7 @@ import "./App.css";
 import { CourseProvider } from "./context/useCourseContext";
 import { CourseDesign } from "./pages/CourseHome/components/CourseDesign";
 import { MyCourse } from "./pages/CourseHome/MyCourse";
+import 'animate.css';
 
 export default function App() {
   return (

@@ -12,26 +12,29 @@ async function gptfetch(request) {
   const Authorization = ``;
 
   try {
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: request }],
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + Authorization,
+    await axios
+      .post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: request }],
         },
-      }
-    ).then(error => {
-      console.error("error", error.response.data);
-      return false;
-    }).then(response =>{
-      console.log("response status", response.status)
-      console.log("response", response.data.choices[0].message.content);
-      return response.data.choices[0].message.content;
-    })
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + Authorization,
+          },
+        }
+      )
+      .then((error) => {
+        console.error("error", error.response.data);
+        return false;
+      })
+      .then((response) => {
+        console.log("response status", response.status);
+        console.log("response", response.data.choices[0].message.content);
+        return response.data.choices[0].message.content;
+      });
   } catch (error) {
     console.error("error", error.response.data);
     return false;
@@ -39,11 +42,10 @@ async function gptfetch(request) {
 }
 
 app.post("/prompt-course", async (req, res) => {
-
   // let data = await gptfetch("hello");
   // console.log("prompt-course data", data);
   // res.json({ res: data });
-  console.log(req.body)
+  console.log(req.body);
   const tags = req.body;
   const concept = `课程大概念：` + tags.concept + `。`;
   const grade = `课程年级：` + tags.grade + "。";
@@ -61,7 +63,6 @@ app.post("/prompt-course", async (req, res) => {
   let data = await gptfetch(request);
   console.log("prompt-course data", data);
   res.json({ res: data });
-
 });
 
 app.get("/", (req, res) => {

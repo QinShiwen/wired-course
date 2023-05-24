@@ -9,6 +9,7 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.28",
     "@types/react": "^18.2.6",
+    "animate.css": "^4.1.1",
     "antd": "^5.4.7",
     "axios": "^1.4.0",
     "cors": "^2.8.5",

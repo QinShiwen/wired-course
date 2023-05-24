@@ -75,7 +75,9 @@ Made by React / TypeScript / Node.js / MongoDB
 6. 5.19 - Css调整
 7. 5.20&21 - 为生成结果划分6个区域
 8. 5.22 - 实现为每一个区域的生成结果实现拓展功能
-9. 5.23 修正UI（拖拽+伸缩）
+9. 5.23 - 编辑每一个部分的内容
+10. 5.24 - 实现导航栏伸缩+拓展效果
+
 # Problem and Solution
 ## Moduale and Installation
 1. styled-components - can't find module. But I have installed by using the order npm i @types/styled-components --save
@@ -88,3 +90,5 @@ const tagsType: { [key: number]: JSX.Element } = {
 };
 ``` 
 3. 调用gpt-3.5-turbo接口回复速度慢问题。
+4. Backend error:
+ - 
