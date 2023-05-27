@@ -88,9 +88,9 @@ const CourseProvider = (props: any) => {
 
   const [courseinfo, setCourseinfo] = useState<any>(testcourse);
 
-  //显示状态：备课中 - 课件已生成
+  //显示状态：备课中 or 课件已生成 or 失败
   const [coursestate, setCoursestate] = useState<boolean>(false);
-
+  const state = ["processing", "success", "fail"]
   //选课件页面的滑动
   const [slide, setSlide] = useState<number>(0);
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useCourseContext } from "../../../context/useCourseContext";
-
+import { Input } from "antd";
 interface InputTagProps {
   tag: string;
   caption: string;
@@ -9,14 +9,15 @@ interface InputTagProps {
 
 export function InputTag({ caption, eg, tag }: InputTagProps) {
   const { changeInfo } = useCourseContext();
-
+  const { TextArea } = Input;
   return (
     <Container>
       <div className="caption">{caption}</div>
-      <input
-        type="text"
+      <TextArea
+        autoSize
         placeholder={eg}
         onChange={(e) => changeInfo(e.target.value, tag)}
+        
       />
     </Container>
   );
@@ -33,12 +34,13 @@ const Container = styled.div`
     margin: 20px 0;
   }
 
-  input {
-    border: 1.5px solid #6396f7;
-    border-radius: 6px;
-    width: 500px;
-    height: 50px;
-    padding: 0.5rem;
-    outline: none;
+  textarea {
+    background: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 30rem;
+    font-size: 1rem;
+    padding: 0.4rem;
+    resize: none;
   }
 `;

@@ -8,20 +8,25 @@ interface TagBoxProps {
   changeInfo: (value: any, index: number) => void;
 }
 
-export function TagBox({ tagnum, caption, information, changeInfo }: TagBoxProps) {
+export function TagBox({
+  tagnum,
+  caption,
+  information,
+  changeInfo,
+}: TagBoxProps) {
   const { TextArea } = Input;
 
   return (
-    <Container>
-      <div className="tag-caption">{caption}</div>
-      <div className="tag-info">
-        <TextArea
-          autoSize
-          value={information}
-          onChange={(e) => changeInfo(e.target.value, tagnum)}
-        />
-      </div>
-    </Container>
+      <Container>
+        <div className="tag-caption">{caption}</div>
+        <div className="tag-info">
+          <TextArea
+            autoSize
+            value={information}
+            onChange={(e) => changeInfo(e.target.value, tagnum)}
+          />
+        </div>
+      </Container>
   );
 }
 

@@ -29,7 +29,19 @@ export function StartPage({
       <div className="left-form">
         <h1>{title}</h1>
         <InputTag tag={tag} caption={caption} eg={eg} />
-        <div onClick = {()=>nextSlide(slidenum)}><NextButton  /></div>
+
+        {intro ? (
+          <div className="intro">
+            <h2>{intro.name}</h2>
+            {intro.content.map((item: any, index: number) => {
+              return <p key={index}>{item}</p>;
+            })}
+          </div>
+        ) : null}
+
+        <div onClick={() => nextSlide(slidenum)}>
+          <NextButton />
+        </div>
       </div>
       <img className="right-img" src={img} alt="bg" />
     </Container>
@@ -40,7 +52,6 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
-
   button {
     cursor: pointer;
     outline: none;
@@ -58,7 +69,11 @@ const Container = styled.div`
     font-weight: 700;
     font-size: 18px;
     color: #fcfcfc;
-
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: auto;
+    margin-bottom: 20px;
+    
     img {
       margin-left: 10px;
     }

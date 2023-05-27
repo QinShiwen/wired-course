@@ -91,15 +91,16 @@ const Container = styled.div`
 
   .left-form {
     padding: 2rem;
+    padding-top: 5rem;
+    padding-left: 5rem;
+
     height: 100vh;
     width: 100vw;
   }
 
   .right-img {
     height: 100vh;
-    position: fixed;
-    right: 0;
-    top: 0;
-    right: 0;
+    margin-left: auto;
+    margin-right: 0;
   }
 `;
