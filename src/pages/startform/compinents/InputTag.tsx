@@ -17,7 +17,6 @@ export function InputTag({ caption, eg, tag }: InputTagProps) {
         autoSize
         placeholder={eg}
         onChange={(e) => changeInfo(e.target.value, tag)}
-        
       />
     </Container>
   );

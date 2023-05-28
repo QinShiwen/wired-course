@@ -2,7 +2,7 @@
 A platform that support teachers to brainstorm their PBL course by AI.
 
 # System Design
-Made by React / TypeScript / Node.js / MongoDB
+Made by React / TypeScript / Node.js / MySQL
 
 ## Course Design
 ### Components
@@ -76,7 +76,9 @@ Made by React / TypeScript / Node.js / MongoDB
 7. 5.20&21 - 为生成结果划分6个区域
 8. 5.22 - 实现为每一个区域的生成结果实现拓展功能
 9. 5.23 - 编辑每一个部分的内容
-10. 5.24 - 实现导航栏伸缩+拓展效果
+10. 5.24 - 实现导航栏伸缩(style keyframe实现)+拓展效果
+11. 5.27 逻辑图+UI小改
+11. 5.28 UI修改-TagsBar弹窗+课程展示Ui
 
 # Problem and Solution
 ## Moduale and Installation

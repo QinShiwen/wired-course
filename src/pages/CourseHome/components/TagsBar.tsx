@@ -21,7 +21,8 @@ export function TagsBar() {
           ))}
       </Space>
       <div className="ready-prompt">
-        <button onClick={fetchCourse}>生成课件</button>
+        <button className = "prompt-button" onClick={fetchCourse}>生成课件</button>
+        <button className = "stop-button">课件生成中</button>
       </div>
     </Container>
   );
@@ -32,7 +33,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20rem;
   height: 100vh;
   box-shadow: 5px 4px 25px rgba(0, 0, 0, 0.25);
 
@@ -44,7 +44,7 @@ const Container = styled.div`
     caret-color: #6396f6;
   }
 
-  button {
+  .prompt-button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -57,5 +57,21 @@ const Container = styled.div`
     border-radius: 47px;
     color: #ffffff;
     cursor: pointer;
+  }
+
+  .stop-button {
+    margin:5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 150px;
+    height: 48px;
+    justify-content: center;
+    border: none;
+    background: grey;
+    color: #ffffff;
+    box-shadow: 0px 20px 50px rgba(46, 46, 46, 0.05);
+    border-radius: 47px;
+    cursor: not-allowed;
   }
 `;

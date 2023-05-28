@@ -39,7 +39,7 @@ export function StartPage({
           </div>
         ) : null}
 
-        <div onClick={() => nextSlide(slidenum)}>
+        <div className="cover-button" onClick={() => nextSlide(slidenum)}>
           <NextButton />
         </div>
       </div>
@@ -52,6 +52,12 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
+
+  .cover-button {
+    margin-top: auto;
+    margin-bottom: 20px;
+  }
+
   button {
     cursor: pointer;
     outline: none;
@@ -71,9 +77,7 @@ const Container = styled.div`
     color: #fcfcfc;
     margin-left: auto;
     margin-right: 20px;
-    margin-top: auto;
-    margin-bottom: 20px;
-    
+
     img {
       margin-left: 10px;
     }

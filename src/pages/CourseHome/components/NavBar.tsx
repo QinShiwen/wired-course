@@ -8,7 +8,7 @@ export function NavBar() {
   return (
     <Container>
       {routesInfo.map((route, index) => (
-        <div key={index}>
+        <div key={index} className="nav-box">
           <Link to={route.path}>{route.name}</Link>
         </div>
       ))}
@@ -24,4 +24,26 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .nav-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #6396f7;
+    margin:10px;
+    box-shadow: 0px 20px 50px rgba(46, 46, 46, 0.05);
+    width: 150px;
+    height: 48px;
+    border-radius: 16px;
+    color: #FFFFFF;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  a{
+    text-decoration:none;
+    color: #FFFFFF;
+  }
+
 `;

@@ -10,6 +10,8 @@ export function CourseView() {
 
   return (
     <Container>
+      {coursestate === "processing" ?(null):null}
+      {coursestate === "fail" ?(null):null}
       {courseinfo && Object.keys(courseinfo).map((content, key) => {
         return <ContentBox key={key} part = {content} content={courseinfo[content]} />;
       })}

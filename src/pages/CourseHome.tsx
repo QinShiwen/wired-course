@@ -49,13 +49,13 @@ const navbarSlideIn = keyframes`
     width: 0%;
   }
   to {
-    width: 13rem;
+    width: 15rem;
   }
 `;
 
 const navbarSlideOut = keyframes`
   from {
-    width: 13rem;
+    width: 15rem;
   }
   to {
     width: 0%;

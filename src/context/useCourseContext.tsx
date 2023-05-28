@@ -6,7 +6,7 @@ import { NumberLiteralType } from "typescript";
 interface CourseContextValue {
   tags: Tags;
   courseinfo: any;
-  coursestate: boolean;
+  coursestate: string;
   slide: number;
   fetchCourse: () => void;
   changeInfo: (value: any, key: string) => void;
@@ -89,13 +89,13 @@ const CourseProvider = (props: any) => {
   const [courseinfo, setCourseinfo] = useState<any>(testcourse);
 
   //显示状态：备课中 or 课件已生成 or 失败
-  const [coursestate, setCoursestate] = useState<boolean>(false);
+  const [coursestate, setCoursestate] = useState("processing");
   const state = ["processing", "success", "fail"]
   //选课件页面的滑动
   const [slide, setSlide] = useState<number>(0);
 
   async function fetchCourse() {
-    setCoursestate(() => false);
+    setCoursestate(() => "processing");
     const response = await axios
       .post("http://localhost:5000/prompt-course", {
         concept: tags.concept.information,
@@ -113,7 +113,7 @@ const CourseProvider = (props: any) => {
     let coursedata = JSON.parse(response?.data.res);
     console.log(coursedata);
     setCourseinfo(() => coursedata);
-    setCoursestate(() => true);
+    setCoursestate(() => "success");
   }
 
   async function extendCourse(part: string) {
@@ -136,6 +136,7 @@ const CourseProvider = (props: any) => {
   }
 
   function changeInfo(value: any, key: string) {
+    
     setTags((prevTagsInfo: any) => ({
       ...prevTagsInfo,
       [key as keyof typeof prevTagsInfo]: {
@@ -143,6 +144,7 @@ const CourseProvider = (props: any) => {
         information: value,
       },
     }));
+    console.log(value, key,tags);
   }
 
   function nextSlide(slidenum: number) {
