@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { NextButton } from "./NextButton";
 import { InputTag } from "./InputTag";
 import NextIncon from "../../../assets/nexticon.png";
+import { useState } from "react";
+
 interface StartPageProps {
   slidenum: number;
   title: any;
@@ -23,23 +25,34 @@ export function StartPage({
   img,
 }: StartPageProps) {
   const { tag, caption, eg } = input;
-  const { slide, nextSlide } = useCourseContext();
+  const { slide, nextSlide, changeInfo } = useCourseContext();
+  const [inputvalue, setInputvalue] = useState<any>("");
+
+  function handleNext(){
+    if(inputvalue.length < 1){
+      alert("请输入内容")
+      return
+    }
+    nextSlide(slidenum);
+    changeInfo(inputvalue, tag);
+  }
+
   return (
     <Container style={{ display: slide === slidenum ? "flex" : "none" }}>
       <div className="left-form">
         <h1>{title}</h1>
-        <InputTag tag={tag} caption={caption} eg={eg} />
-
+        <InputTag tag={tag} caption={caption} eg={eg} setInputvalue={setInputvalue}/>
         {intro ? (
           <div className="intro">
             <h2>{intro.name}</h2>
+
             {intro.content.map((item: any, index: number) => {
               return <p key={index}>{item}</p>;
             })}
           </div>
         ) : null}
 
-        <div className="cover-button" onClick={() => nextSlide(slidenum)}>
+        <div className="cover-button" onClick={handleNext}>
           <NextButton />
         </div>
       </div>
@@ -56,6 +69,12 @@ const Container = styled.div`
   .cover-button {
     margin-top: auto;
     margin-bottom: 20px;
+  }
+
+  h2 {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: #6396f7;
   }
 
   button {

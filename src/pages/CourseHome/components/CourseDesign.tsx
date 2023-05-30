@@ -6,8 +6,8 @@ import {
   useCourseContext,
 } from "../../../context/useCourseContext";
 import { useState } from "react";
-import SplitPane from "react-split-pane";
-import Pane from "react-split-pane";
+import PopIn from "../../../assets/popin-tags.png";
+import PopOut from "../../../assets/popout-tags.png";
 
 interface CourseDesignProps {}
 
@@ -22,7 +22,13 @@ export function CourseDesign() {
         </div>
         <div className="view-box">
           <div className="pop-tags">
-            <button onClick={() => setShowtags(!showtags)}>pop</button>
+            <div onClick={() => setShowtags(!showtags)}>
+              {showtags ? (
+                <img src={PopOut} width={40} alt="img" />
+              ) : (
+                <img src={PopIn} width={40} alt="img" />
+              )}
+            </div>
           </div>
           <ViewBox />
         </div>
@@ -58,6 +64,7 @@ const Container = styled.div`
     animation: 0.2s ease-in-out 0s 1 normal forwards running ${navbarSlideIn};
   }
   .slide-out {
+    width: 20rem;
     animation: 0.2s ease-in-out 0s 1 normal forwards running ${navbarSlideOut};
   }
   .pop-tags {
@@ -68,11 +75,10 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
   }
 
-  .pop-tags button {
-    box-shadow: 5px 4px 25px rgba(0, 0, 0, 0.25);
+  img{
+    cursor: pointer;
   }
 
   .view-box {

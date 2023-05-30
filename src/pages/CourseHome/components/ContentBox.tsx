@@ -3,6 +3,8 @@ import ReactMarkdown from "react-markdown";
 import { useState } from "react";
 import { useCourseContext } from "../../../context/useCourseContext";
 import { Input } from "antd";
+import ExtendTrue from "../../../assets/extend-t.png";
+import ExtendFalse from "../../../assets/extend-f.png";
 
 interface ContentBoxProps {
   content: string;
@@ -16,12 +18,14 @@ export function ContentBox({ content, part }: ContentBoxProps) {
   const [nowcontent, setNowcontent] = useState<string>(content);
   const [edit, setEdit] = useState<boolean>(false);
   const { TextArea } = Input;
+  const [extendIcon, setExtendIcon] = useState<boolean>(false);
 
-  function handleBlur() {
+  function handleBlur(e: Event) {
     setCourseinfo((prevCourseinfo: any) => ({
       ...prevCourseinfo,
       [part]: nowcontent,
     }));
+    console.log();
     setEdit(false);
   }
 
@@ -31,29 +35,25 @@ export function ContentBox({ content, part }: ContentBoxProps) {
         className="show-content"
         onMouseEnter={() => setShowButton(true)}
         onMouseLeave={() => setShowButton(false)}
+        onClick={() => setEdit(true)}
       >
-        {edit ? (
-          <TextArea
-            value={nowcontent}
-            autoSize
-            onChange={(e) => setNowcontent(e.target.value)}
-            onBlur={handleBlur}
-            autoFocus
-          />
-        ) : (
-          <>
-            {" "}
-            {showButton ? (
-              <div className="edit-content">
-                <button onClick={() => setEdit(true)}>编辑</button>
-                <button onClick={() => extendCourse(part)}>扩展</button>
-              </div>
+        {showButton ? (
+          <div
+            className="edit-content"
+            onMouseEnter={() => setExtendIcon(true)}
+            onMouseLeave={() => setExtendIcon(false)}
+          >
+            {extendIcon ? (
+              <img src={ExtendTrue} alt="img" width={35} />
             ) : (
-              ""
+              <img src={ExtendFalse} alt="img" width={30} />
             )}
-            <ReactMarkdown>{nowcontent}</ReactMarkdown>
-          </>
-        )}
+          </div>
+        ) : null}
+
+        <div className="editor" contentEditable="true">
+          <ReactMarkdown>{nowcontent}</ReactMarkdown>
+        </div>
       </div>
     </Container>
   );
@@ -65,9 +65,15 @@ const Container = styled.div`
   .show-content {
     height: 100%;
     position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    user-select: none;
   }
   .show-content:hover {
-    background-color: #d9d9d9;
+    background: rgba(224, 240, 255, 0.8);
+    border-radius: 10px;
   }
 
   .in-extend {
@@ -78,6 +84,12 @@ const Container = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
+  }
+
+  .editor {
+    outline: none;
+    border: none;
+    cursor: text;
   }
 
   .edit-content button {

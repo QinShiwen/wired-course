@@ -4,7 +4,7 @@ import { MyCourse } from "./CourseHome/MyCourse";
 import { NavBar } from "./CourseHome/components/NavBar";
 import styled, { keyframes } from "styled-components";
 import { useState } from "react";
-
+import NavPop from "../assets/popout-nav.png";
 interface CourseHomeProps {}
 
 export const routesInfo = [
@@ -25,8 +25,8 @@ export function CourseHome() {
   return (
     <>
       <Container>
-        <div className="pop-nav">
-          <button onClick={() => setShownav(!shownav)}>pop</button>
+        <div className="pop-nav" onClick={() => setShownav(!shownav)}>
+          <img src = {NavPop} alt="img" width={30}/>
         </div>
 
         <div className={shownav ? "slide-in" : "slide-out"}>
@@ -66,6 +66,9 @@ const Container = styled.div`
   .pop-nav {
     position: absolute;
     z-index: 100;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    cursor: pointer;
   }
   .slide-in {
     animation: 0.2s ease-in-out 0s 1 normal forwards running ${navbarSlideIn};

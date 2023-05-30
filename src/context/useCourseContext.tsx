@@ -1,7 +1,6 @@
-import React, { FC, createContext, useContext, useState } from "react";
+import  { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { pagesdata } from "../pages/startform/StartForm";
-import { NumberLiteralType } from "typescript";
 
 interface CourseContextValue {
   tags: Tags;
@@ -24,10 +23,10 @@ interface Tags {
     caption: string;
     information: string;
   };
-  target: {
-    caption: string;
-    information: string;
-  };
+  // target: {
+  //   caption: string;
+  //   information: string;
+  // };
   questions: {
     caption: string;
     information: string;
@@ -70,27 +69,23 @@ const CourseProvider = (props: any) => {
   const [tags, setTags] = useState<Tags>({
     concept: {
       caption: "请输入您的课程大概念",
-      information: "测量树的高度",
+      information: "",
     },
     grade: {
       caption: "请输入您所教授的年级",
-      information: "一年级",
-    },
-    target: {
-      caption: "请输入您的授课目标",
-      information: "拓展孩子发散思维，让孩子一边发散思维一边学习数学知识",
+      information: "",
     },
     questions: {
       caption: "请输入您的驱动性问题",
-      information: "如果大树倒了，会砸到我们的教学楼吗？",
+      information: "",
     },
   });
 
   const [courseinfo, setCourseinfo] = useState<any>(testcourse);
 
   //显示状态：备课中 or 课件已生成 or 失败
-  const [coursestate, setCoursestate] = useState("processing");
-  const state = ["processing", "success", "fail"]
+  const [coursestate, setCoursestate] = useState("success");
+  const state = ["processing", "success", "fail"];
   //选课件页面的滑动
   const [slide, setSlide] = useState<number>(0);
 
@@ -100,7 +95,6 @@ const CourseProvider = (props: any) => {
       .post("http://localhost:5000/prompt-course", {
         concept: tags.concept.information,
         grade: tags.grade.information,
-        target: tags.target.information,
         questions: tags.questions.information,
       })
       .catch((err) => {
@@ -127,6 +121,7 @@ const CourseProvider = (props: any) => {
       .catch((err) => {
         console.log(err);
       });
+      
     console.log(response);
 
     setCourseinfo((prevCourseinfo: any) => ({
@@ -136,7 +131,6 @@ const CourseProvider = (props: any) => {
   }
 
   function changeInfo(value: any, key: string) {
-    
     setTags((prevTagsInfo: any) => ({
       ...prevTagsInfo,
       [key as keyof typeof prevTagsInfo]: {
@@ -144,7 +138,7 @@ const CourseProvider = (props: any) => {
         information: value,
       },
     }));
-    console.log(value, key,tags);
+    console.log(tags);
   }
 
   function nextSlide(slidenum: number) {

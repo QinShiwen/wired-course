@@ -5,9 +5,10 @@ interface InputTagProps {
   tag: string;
   caption: string;
   eg: string;
+  setInputvalue:(value:any)=>any;
 }
 
-export function InputTag({ caption, eg, tag }: InputTagProps) {
+export function InputTag({ caption, eg, tag, setInputvalue }: InputTagProps) {
   const { changeInfo } = useCourseContext();
   const { TextArea } = Input;
   return (
@@ -16,7 +17,7 @@ export function InputTag({ caption, eg, tag }: InputTagProps) {
       <TextArea
         autoSize
         placeholder={eg}
-        onChange={(e) => changeInfo(e.target.value, tag)}
+        onChange={(e)=>setInputvalue(e.target.value)}
       />
     </Container>
   );
