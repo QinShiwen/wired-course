@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { CourseDesign } from "./CourseHome/components/CourseDesign";
+import { CourseDesign } from "./CourseDesign/CourseDesign";
 import { MyCourse } from "./CourseHome/MyCourse";
 import { NavBar } from "./CourseHome/components/NavBar";
 import styled, { keyframes } from "styled-components";

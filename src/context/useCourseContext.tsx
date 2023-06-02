@@ -1,6 +1,7 @@
 import  { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { pagesdata } from "../pages/startform/StartForm";
+import { marked } from "marked";
 
 interface CourseContextValue {
   tags: Tags;
@@ -12,6 +13,7 @@ interface CourseContextValue {
   extendCourse: (content: string) => void;
   nextSlide: (slidenum: number) => any;
   setCourseinfo: (value: any) => void;
+  handleCommand: (command: string) => void;
 }
 
 interface Tags {
@@ -23,10 +25,6 @@ interface Tags {
     caption: string;
     information: string;
   };
-  // target: {
-  //   caption: string;
-  //   information: string;
-  // };
   questions: {
     caption: string;
     information: string;
@@ -44,18 +42,17 @@ const useCourseContext = () => {
   };
 };
 
-const testcourse = {
+let testcourse: { [key: string]: string } = {
   "part1": "## 课程导入\n\n让学生观察周围校园中的大树，引导他们思考大树倒下会发生什么事情，并提出驱动性问题：“如果大 树倒了，会砸到我们的教学楼吗？”",
-
   "part2": "## 教学目标\n\n1. 能够利用工具，测量树的高度。\n2. 能够运用数学知识，计算出树的高度。\n3. 能够发散思维，探究大树倒下的影响。",
-
   "part3": "## 教学方案\n\n本课程采用PBL模式进行教学。在学生的学习过程中，教师会给予适当的指导与帮助，但不会直接给出答案。学生应该通过自己的思考与探究来完成任务。\n\n本课程所需素材：卷尺、树棍等测量工具。\n\n学生分组完成任务，每组学生需要对一颗大树进行测量，并探究该树倒下可能会产生的影响。",
-
   "part4": "## 教学步骤\n\n1. 教师引导学生进行思考，讨论大树倒下可能会产生的影响。\n2. 学生分组完成任务。每组学生选择 一颗大树进行测量，记录下树的高度。\n3. 学生利用数学知识，计算出该树距离教学楼有多远，判断是否会影响教学楼的安全。\n4. 学生总结探究，分享各自的发现与感悟。\n5. 教师进行总结和点评，提升学生感知与认知水平。",
-
   "part5": "## 评估与展示\n\n学生提交测量数据与计算结果，展示自己的探究成果和思考过程，并进行自我评估。教师会根据学生 的表现，反馈学习成果和方向指引。"
 }
 
+for(let i in testcourse){
+  testcourse[i] = marked.parse(testcourse[i])
+}
 
 const CourseProvider = (props: any) => {
   const coursepart: any = {
@@ -151,6 +148,21 @@ const CourseProvider = (props: any) => {
     return 1;
   }
 
+
+  function handleCommand(command: string) {
+    console.log(command);
+    if (command.includes('color') || command.includes('backcolor') || command.includes('forecolor')) {
+      let result = command.split('|')
+      document.execCommand(result[0], false, result[1]);
+    }
+    if (command === 'h1' || command === 'h2' || command === 'p') {
+      document.execCommand('formatBlock', false, command);
+    }
+    else{
+      document.execCommand(command, false, "null");
+    }
+  }
+
   const contextValue: CourseContextValue = {
     tags,
     courseinfo,
@@ -161,6 +173,7 @@ const CourseProvider = (props: any) => {
     extendCourse,
     nextSlide,
     setCourseinfo,
+    handleCommand
   };
 
   return <CourseContext.Provider value={contextValue} {...props} />;

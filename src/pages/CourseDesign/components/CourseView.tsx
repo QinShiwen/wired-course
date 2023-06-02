@@ -1,17 +1,15 @@
 import { useCourseContext } from "../../../context/useCourseContext";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { ContentBox } from "./ContentBox";
 import { ErrorView } from "./ErrorView";
 import { ProcessView } from "./ProcessView";
 import { ToolBar } from "./ToolBar";
+import { ContentBox } from "./ContentBox";
+
 export function CourseView() {
   const { courseinfo, coursestate } = useCourseContext();
-  const [showButton, setShowButton] = useState<boolean>(false);
-
   return (
     <Container>
-      <ToolBar />
       <div className="show-result">
         {coursestate === "fail" ? <ErrorView /> : null}
         {coursestate === "processing" ? <ProcessView /> : null}
@@ -31,16 +29,12 @@ export function CourseView() {
 }
 
 const Container = styled.div`
+  padding: 0 2rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   overflow: auto;
   padding-bottom: 3rem;
-
-  .show-content {
-    margin: 1rem;
-    padding: 1rem;
-  }
 
   .show-result{
     padding-top: 2rem;
