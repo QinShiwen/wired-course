@@ -2,6 +2,7 @@ import NextIncon from "../../../assets/nexticon.png";
 import styled from "styled-components";
 
 export function NextButton() {
+
   return (
     <Container>
       <button>

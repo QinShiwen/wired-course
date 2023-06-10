@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ant-notification-notice {
+  width:200px !important;
+  padding:0 !important;
+  overflow: visible !important;
+  
+}
+
+.ant-notification-notice-content{
+  border-radius: 20px !important;
+}
+
+.ant-notification-notice-description{
+  margin-inline-start:0 !important;
+}

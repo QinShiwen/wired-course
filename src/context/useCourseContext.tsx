@@ -1,9 +1,11 @@
-import  { createContext, useContext, useState } from "react";
+import  { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { pagesdata } from "../pages/startform/StartForm";
+import { pagedata } from "../pages/StartForm/pagesdata";
 import { marked } from "marked";
+import { useNavigate } from "react-router-dom";
 
 interface CourseContextValue {
+  promptData: PromptData;
   tags: Tags;
   courseinfo: any;
   coursestate: string;
@@ -31,6 +33,12 @@ interface Tags {
   };
 }
 
+interface PromptData{
+  concept: string;
+  grade: string;
+  questions: string;
+}
+
 const CourseContext = createContext<CourseContextValue>(
   {} as CourseContextValue
 );
@@ -55,6 +63,16 @@ for(let i in testcourse){
 }
 
 const CourseProvider = (props: any) => {
+
+  useEffect(() => {
+   
+
+  }, []);
+
+  //useNavigate
+  const navigate = useNavigate();
+  
+
   const coursepart: any = {
     part1: "课程导入",
     part2: "教学目标",
@@ -62,6 +80,12 @@ const CourseProvider = (props: any) => {
     part4: "教学步骤",
     part5: "评估与展示",
   };
+
+  const [promptData, setpromptData] = useState<PromptData>({
+    concept: "",
+    grade: "",
+    questions: "",
+  });
 
   const [tags, setTags] = useState<Tags>({
     concept: {
@@ -86,6 +110,7 @@ const CourseProvider = (props: any) => {
   //选课件页面的滑动
   const [slide, setSlide] = useState<number>(0);
 
+  //生成课件信息
   async function fetchCourse() {
     setCoursestate(() => "processing");
     const response = await axios
@@ -107,6 +132,7 @@ const CourseProvider = (props: any) => {
     setCoursestate(() => "success");
   }
 
+  //扩展该部分课件
   async function extendCourse(part: string) {
     console.log(part, courseinfo[part], typeof courseinfo[part]);
 
@@ -138,17 +164,18 @@ const CourseProvider = (props: any) => {
     console.log(tags);
   }
 
+  //页面控制
   function nextSlide(slidenum: number) {
-    console.log(slidenum, pagesdata.length - 1);
-    if (slidenum !== pagesdata.length - 1) {
+    console.log(slidenum, pagedata.length - 1);
+    if (slidenum !== pagedata.length - 1) {
       setSlide((slide) => slide + 1);
     } else {
-      window.location.href = "/coursehome/*";
+      navigate("/coursehome");
     }
     return 1;
   }
 
-
+  //课件编辑工具栏
   function handleCommand(command: string) {
     console.log(command);
     if (command.includes('color') || command.includes('backcolor') || command.includes('forecolor')) {
@@ -164,6 +191,7 @@ const CourseProvider = (props: any) => {
   }
 
   const contextValue: CourseContextValue = {
+    promptData,
     tags,
     courseinfo,
     coursestate,

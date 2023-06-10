@@ -5,7 +5,6 @@ import { CourseProvider } from "../../context/useCourseContext";
 import { useState } from "react";
 import PopIn from "../../assets/popin-tags.png";
 import PopOut from "../../assets/popout-tags.png";
-
 export function CourseDesign() {
   const [showtags, setShowtags] = useState(true);
 

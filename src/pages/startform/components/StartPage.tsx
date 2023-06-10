@@ -1,9 +1,10 @@
-import { useCourseContext } from "../../../../context/useCourseContext";
+import { useCourseContext } from "../../../context/useCourseContext";
 import styled from "styled-components";
-import { NextButton } from "./NextButton";
 import { InputTag } from "./InputTag";
 import NextIncon from "../../../assets/nexticon.png";
 import { useState } from "react";
+import { Intro } from "./Intro";
+import { PopHint } from "../../widgets/PopHint";
 
 interface StartPageProps {
   slidenum: number;
@@ -17,6 +18,7 @@ interface StartPageProps {
   img: any;
 }
 
+
 export function StartPage({
   slidenum,
   title,
@@ -24,14 +26,15 @@ export function StartPage({
   intro,
   img,
 }: StartPageProps) {
+
   const { tag, caption, eg } = input;
   const { slide, nextSlide, changeInfo } = useCourseContext();
   const [inputvalue, setInputvalue] = useState<any>("");
 
-  function handleNext(){
-    if(inputvalue.length < 1){
-      alert("请输入内容")
-      return
+  function handleNext() {
+    if (inputvalue.length < 1) {
+      PopHint({ placement: "top", duration: 3, top: 100 });
+      return;
     }
     nextSlide(slidenum);
     changeInfo(inputvalue, tag);
@@ -41,19 +44,19 @@ export function StartPage({
     <Container style={{ display: slide === slidenum ? "flex" : "none" }}>
       <div className="left-form">
         <h1>{title}</h1>
-        <InputTag tag={tag} caption={caption} eg={eg} setInputvalue={setInputvalue}/>
-        {intro ? (
-          <div className="intro">
-            <h2>{intro.name}</h2>
-
-            {intro.content.map((item: any, index: number) => {
-              return <p key={index}>{item}</p>;
-            })}
-          </div>
-        ) : null}
-
-        <div className="cover-button" onClick={handleNext}>
-          <NextButton />
+        <InputTag
+          tag={tag}
+          caption={caption}
+          eg={eg}
+          setInputvalue={setInputvalue}
+        />
+        {intro ? <Intro intro={intro} /> : null}
+        
+        <div className="cover-button">
+          <button onClick={handleNext}>
+            继续
+            <img src={NextIncon} alt="nexticon" height={18} />
+          </button>
         </div>
       </div>
       <img className="right-img" src={img} alt="bg" />
@@ -65,16 +68,13 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: absolute;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
 
   .cover-button {
     margin-top: auto;
     margin-bottom: 20px;
-  }
-
-  h2 {
-    text-decoration: underline;
-    text-underline-offset: 10px;
-    text-decoration-color: #6396f7;
   }
 
   button {

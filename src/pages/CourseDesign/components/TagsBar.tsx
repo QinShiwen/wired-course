@@ -47,7 +47,7 @@ const navbarfadeIn = keyframes`
 const Container = styled.div`
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-top: 2rem;
+  padding-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
