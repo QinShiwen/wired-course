@@ -1,21 +1,21 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { CourseDesign } from "./CourseDesign/CourseDesign";
-import { MyCourse } from "./CourseHome/MyCourse";
-import { NavBar } from "./CourseHome/components/NavBar";
+import { CourseDesign } from "../CourseDesign/CourseDesign";
+import { MyCourse } from "./MyCourse";
+import { NavBar } from "./NavBar";
 import styled, { keyframes } from "styled-components";
 import { useState } from "react";
-import NavPop from "../assets/popout-nav.png";
+import NavPop from "../../assets/popout-nav.png";
 interface CourseHomeProps {}
 
 export const routesInfo = [
   {
     name: "设计课程",
-    path: "/coursehome/",
+    path: "/",
     component: CourseDesign,
   },
   {
     name: "我的课程",
-    path: "/coursehome/my-course",
+    path: "/my-course",
     component: MyCourse,
   },
 ];

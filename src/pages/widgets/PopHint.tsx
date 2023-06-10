@@ -8,10 +8,8 @@ interface popHintProps {
   top: number;
 }
 
-export const [api,contextHolder] = notification.useNotification({});
-
 export function PopHint({ placement, duration, top = 100 }: popHintProps) {
-  const [api, contextHolder] = notification.useNotification({
+  const [api] = notification.useNotification({
     placement: "top",
     top: top,
   });
@@ -22,5 +20,4 @@ export function PopHint({ placement, duration, top = 100 }: popHintProps) {
     description: <img src={PopImg} alt="popimg" width={200} />,
     placement,
   });
-
 }

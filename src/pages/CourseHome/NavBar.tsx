@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { keyframes, css } from "styled-components";
-import { routesInfo } from "../../CourseHome";
+import { routesInfo } from "./CourseHome";
 import { useState } from "react";
 import "animate.css";
 

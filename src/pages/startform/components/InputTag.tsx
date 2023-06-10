@@ -9,7 +9,7 @@ interface InputTagProps {
 }
 
 export function InputTag({ caption, eg, tag, setInputvalue }: InputTagProps) {
-  const { changeInfo } = useCourseContext();
+  const { updatePromptData } = useCourseContext();
   const { TextArea } = Input;
   return (
     <Container>

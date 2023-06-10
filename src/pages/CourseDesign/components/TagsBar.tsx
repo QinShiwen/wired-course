@@ -5,23 +5,29 @@ import { useCourseContext } from "../../../context/useCourseContext";
 import { useEffect, useState } from "react";
 
 export function TagsBar() {
-  const { tags, fetchCourse, changeInfo } = useCourseContext();
+  const { promptData, fetchCourse, updatePromptData } = useCourseContext();
 
   useEffect(() => {
-    //console.log(tags);
+    console.log(promptData);
   });
+
+  const caption = [
+    "请输入您的课程大概念",
+    "请输入您的课程年级",
+    "请输入您的课程问题",
+  ];
 
   return (
     <Container>
       <Space direction="vertical" size={30}>
-        {tags &&
-          Object.entries(tags).map(([key, tagInfo]) => (
+        {promptData &&
+          Object.entries(promptData).map(([key, data],index) => (
             <TagBox
-              key={key}
+              key={index}
               tagnum={key}
-              caption={tagInfo.caption}
-              information={tagInfo.information}
-              changeInfo={(value) => changeInfo(value, key)}
+              caption={caption[index]}
+              information={data}
+              changeInfo={(value) => updatePromptData(value, key)}
             />
           ))}
       </Space>

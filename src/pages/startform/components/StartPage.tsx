@@ -28,7 +28,7 @@ export function StartPage({
 }: StartPageProps) {
 
   const { tag, caption, eg } = input;
-  const { slide, nextSlide, changeInfo } = useCourseContext();
+  const { slide, nextSlide, updatePromptData } = useCourseContext();
   const [inputvalue, setInputvalue] = useState<any>("");
 
   function handleNext() {
@@ -36,8 +36,8 @@ export function StartPage({
       PopHint({ placement: "top", duration: 3, top: 100 });
       return;
     }
+    updatePromptData(inputvalue, tag);
     nextSlide(slidenum);
-    changeInfo(inputvalue, tag);
   }
 
   return (
@@ -51,7 +51,7 @@ export function StartPage({
           setInputvalue={setInputvalue}
         />
         {intro ? <Intro intro={intro} /> : null}
-        
+
         <div className="cover-button">
           <button onClick={handleNext}>
             继续

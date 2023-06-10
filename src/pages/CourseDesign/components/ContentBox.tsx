@@ -12,7 +12,7 @@ interface ContentBoxProps {
 
 export function ContentBox({ content, part }: ContentBoxProps) {
   const [showButton, setShowButton] = useState<boolean>(false);
-  const { extendCourse, setCourseinfo,handleCommand } = useCourseContext();
+  const { extendCourse, setNowCourseContent,handleStyleCommand } = useCourseContext();
   const [extend, setExtend] = useState<boolean>(true);
   const [nowcontent, setNowcontent] = useState<string>(content);
   const [edit, setEdit] = useState<boolean>(false);
@@ -27,7 +27,7 @@ export function ContentBox({ content, part }: ContentBoxProps) {
       setNowcontent(editorRef.current.innerHTML);
     }
     console.log(nowcontent);
-    setCourseinfo((prevCourseinfo: any) => ({
+    setNowCourseContent((prevCourseinfo: any) => ({
       ...prevCourseinfo,
       [part]: nowcontent,
     }));

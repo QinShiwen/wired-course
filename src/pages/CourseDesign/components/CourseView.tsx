@@ -7,19 +7,20 @@ import { ToolBar } from "./ToolBar";
 import { ContentBox } from "./ContentBox";
 
 export function CourseView() {
-  const { courseinfo, coursestate } = useCourseContext();
+  const { nowCourseContent, courseStatus } = useCourseContext();
   return (
     <Container>
       <div className="show-result">
-        {coursestate === "fail" ? <ErrorView /> : null}
-        {coursestate === "processing" ? <ProcessView /> : null}
-        {courseinfo &&
-          Object.keys(courseinfo).map((content, key) => {
+        {courseStatus === 0 ? <ErrorView /> : null}
+        {courseStatus === 1 ? <ProcessView /> : null}
+
+        {nowCourseContent &&
+          Object.keys(nowCourseContent).map((content, key) => {
             return (
               <ContentBox
                 key={key}
                 part={content}
-                content={courseinfo[content]}
+                content={nowCourseContent[content]}
               />
             );
           })}

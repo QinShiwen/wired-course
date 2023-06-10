@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 import { Input } from "antd";
 interface TagBoxProps {
   tagnum: any;

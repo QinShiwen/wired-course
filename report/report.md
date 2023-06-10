@@ -22,14 +22,7 @@
 ```ts
 {
     //当前展示的课程
-    "presentcourse":{
-        "version":1,   //第几个版本
-        "content":{
-            "part-1":1  //该部分的第几个版本
-            "part-2":1
-            ...
-        }
-    },
+    "presentcourse":1   //第几个版本
     //总体课程数据
     "coursedata":[{  //记录每一个版本
         //存放本次记录prompt的数据
@@ -54,7 +47,12 @@
 - 页面数据模型
 
 ```ts
-
+{
+    userinfo:{}
+    navbar:{}
+    tags:{}
+    show: courseinfo | error | progress
+}
 ```
 
 ### Context 共享上下文
@@ -62,16 +60,20 @@
 ```ts
 {
   slide: number;   //开始表单指导tags页数
-  tags:[concept,grade,questions], //当前prompt的标签
-  presentCourse:[], //当前展示的课程
-  coursedatas:[],   //存储记录总的数据
+  promptData:{concept,grade,questions}, //当前prompt的标签
+  nowCourseContent:any;	   //当前课件信息 	
+  courseStatus: 0;    //当前状态：备课中1、成功2、失败0
+  nowCourseIndex:1, //当前展示的课程下标
+      
+  courseHistory:[{   //存储记录总的数据
+      prompt-data:{}
+      coursecontent:{}         
+  }],   
   
-  courseinfo: any;
-  coursestate: string;
   fetchCourse: () => void;
-  changeInfo: (value: any, key: string) => void;
+
   extendCourse: (content: string) => void;
-  nextSlide: (slidenum: number) => any;
+  nextSlide: (slidenum: number) => void;  //下一页控制
   setCourseinfo: (value: any) => void;
 }
 ```
@@ -113,6 +115,33 @@ testcourse[i] = marked.parse(testcourse[i])
 ```
 
 ```
-### 登录注册系统架构
 
-### 社区系统架构
+
+#### 课件历史记录
+
+专门使用一个数组存储课件的历史，包含prompt数据与当前课件等。
+
+```tsx
+//fetchCourse函数逻辑
+```
+
+
+
+### 问题与解决方案
+
+将ant-design的消息提示窗包装成一个单独的组件时出现了以下问题：
+
+```
+Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons: 
+1. You might have mismatching versions of React and the renderer (such as React DOM) 
+2. You might be breaking the Rules of Hooks 
+3. You might have more than one copy of React in the same app
+```
+
+但奇怪的是我并没有在组件中或是外面使用hooks
+
+
+
+## 登录注册系统架构
+
+## 社区系统架构
