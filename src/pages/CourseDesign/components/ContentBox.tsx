@@ -4,6 +4,9 @@ import { useCourseContext } from "../../../context/useCourseContext";
 import ExtendTrue from "../../../assets/extend-t.png";
 import ExtendFalse from "../../../assets/extend-f.png";
 import { ToolBar } from "./ToolBar";
+import type { MenuProps } from "antd";
+import { Dropdown } from "antd";
+import ExtendImg from "../../../assets/toolbar/extend.png";
 
 interface ContentBoxProps {
   content: string;
@@ -12,21 +15,30 @@ interface ContentBoxProps {
 
 export function ContentBox({ content, part }: ContentBoxProps) {
   const [showButton, setShowButton] = useState<boolean>(false);
-  const { extendCourse, setNowCourseContent,handleStyleCommand } = useCourseContext();
-  const [extend, setExtend] = useState<boolean>(true);
+  const { extendCourse, setNowCourseContent } = useCourseContext();
   const [nowcontent, setNowcontent] = useState<string>(content);
   const [edit, setEdit] = useState<boolean>(false);
   const [extendIcon, setExtendIcon] = useState<boolean>(false);
   const editorRef = useRef<HTMLDivElement>(null);
 
-  
+  const items: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <span className="extend-menu" onClick={()=>extendCourse}>
+          <img src={ExtendImg} alt="extend" height={20}/>
+          请帮我扩展
+        </span>
+      ),
+    },
+  ];
+
   function handleChange() {
     setShowButton(false);
-    //console.log("change",editorRef.current?.innerHTML);
     if (editorRef.current) {
       setNowcontent(editorRef.current.innerHTML);
     }
-    console.log(nowcontent);
+    // console.log(nowcontent);
     setNowCourseContent((prevCourseinfo: any) => ({
       ...prevCourseinfo,
       [part]: nowcontent,
@@ -53,20 +65,19 @@ export function ContentBox({ content, part }: ContentBoxProps) {
             <div
               onMouseEnter={() => setExtendIcon(true)}
               onMouseLeave={() => setExtendIcon(false)}
+              style={{ marginLeft: "5px" }}
             >
-              {extendIcon ? (
-                <img src={ExtendTrue} alt="img" width={35} />
-              ) : (
-                <img src={ExtendFalse} alt="img" width={30} />
-              )}
+              <Dropdown menu={{ items }}>
+                {extendIcon ? (
+                  <img src={ExtendTrue} alt="img" width={30} height={30} />
+                ) : (
+                  <img src={ExtendFalse} alt="img" width={30} height={30} />
+                )}
+              </Dropdown>
             </div>
           </div>
         ) : null}
-        <div
-          className="editor"
-          contentEditable="true"
-          ref={editorRef}
-        />
+        <div className="editor" contentEditable="true" ref={editorRef} />
       </div>
     </Container>
   );

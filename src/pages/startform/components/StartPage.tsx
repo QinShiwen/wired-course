@@ -5,6 +5,9 @@ import NextIncon from "../../../assets/nexticon.png";
 import { useState } from "react";
 import { Intro } from "./Intro";
 import { PopHint } from "../../widgets/PopHint";
+import PopImg from "../../../assets/input-pop.png";
+import { notification } from "antd";
+import type { NotificationPlacement } from "antd/es/notification/interface";
 
 interface StartPageProps {
   slidenum: number;
@@ -30,10 +33,21 @@ export function StartPage({
   const { tag, caption, eg } = input;
   const { slide, nextSlide, updatePromptData } = useCourseContext();
   const [inputvalue, setInputvalue] = useState<any>("");
+  const [api,contextHolder] = notification.useNotification({
+    placement: "top",
+    top: 100,
+  });
 
+  
   function handleNext() {
     if (inputvalue.length < 1) {
-      PopHint({ placement: "top", duration: 3, top: 100 });
+      // PopHint({ placement: "top", duration: 3, top: 100 });
+      api.open({
+        message: null,
+        duration: 4,
+        description: <img src={PopImg} alt="popimg" width={200} />,
+        placement: "top",
+      });
       return;
     }
     updatePromptData(inputvalue, tag);
@@ -42,6 +56,7 @@ export function StartPage({
 
   return (
     <Container style={{ display: slide === slidenum ? "flex" : "none" }}>
+      {contextHolder}
       <div className="left-form">
         <h1>{title}</h1>
         <InputTag

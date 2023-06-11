@@ -6,8 +6,11 @@ import { ProcessView } from "./ProcessView";
 import { ToolBar } from "./ToolBar";
 import { ContentBox } from "./ContentBox";
 
+
 export function CourseView() {
+
   const { nowCourseContent, courseStatus } = useCourseContext();
+
   return (
     <Container>
       <div className="show-result">
@@ -25,6 +28,7 @@ export function CourseView() {
             );
           })}
       </div>
+      
     </Container>
   );
 }
@@ -42,4 +46,5 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
   }
+
 `;

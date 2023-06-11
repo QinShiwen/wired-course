@@ -3,12 +3,29 @@ import styled, { keyframes } from "styled-components";
 import { Space } from "antd";
 import { useCourseContext } from "../../../context/useCourseContext";
 import { useEffect, useState } from "react";
-
+import { notification } from "antd";
+import PopImg from "../../../assets/input-pop.png";
 export function TagsBar() {
   const { promptData, fetchCourse, updatePromptData } = useCourseContext();
+  const [api,contextHolder] = notification.useNotification({
+    placement: "top",
+    top: 100,
+  });
+  function handleTagsButtonClick(){
+    Object.entries(promptData).forEach(([key, data]) => {
+      if (data === "") {
+        api.open({
+          message: null,
+          duration: 4,
+          description: <img src={PopImg} alt="popimg" width={200} />,
+          placement: "top",
+        });
+      }
+    });
+    fetchCourse();
+  }
 
   useEffect(() => {
-    console.log(promptData);
   });
 
   const caption = [
@@ -19,6 +36,7 @@ export function TagsBar() {
 
   return (
     <Container>
+      {contextHolder}
       <Space direction="vertical" size={30}>
         {promptData &&
           Object.entries(promptData).map(([key, data],index) => (
@@ -32,7 +50,7 @@ export function TagsBar() {
           ))}
       </Space>
       <div className="ready-prompt">
-        <button className="prompt-button" onClick={fetchCourse}>
+        <button className="prompt-button" onClick={handleTagsButtonClick}>
           生成课件
         </button>
         <button className="stop-button">课件生成中</button>
