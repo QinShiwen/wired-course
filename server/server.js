@@ -14,7 +14,7 @@ app.use(express.json());
 async function gptfetch(request) {
   console.log("request", request);
   //
-  const Authorization = `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`;
+  const Authorization = ``;
   try {
     let retPrompt = false;
     await axios
