@@ -6,32 +6,33 @@ import { useEffect, useState } from "react";
 import { notification } from "antd";
 import PopImg from "../../../assets/input-pop.png";
 export function TagsBar() {
-  const { promptData, fetchCourse, updatePromptData } = useCourseContext();
-  const [api,contextHolder] = notification.useNotification({
+  const { promptData, courseStatus, fetchCourse, updatePromptData } =
+    useCourseContext();
+  const [api, contextHolder] = notification.useNotification({
     placement: "top",
     top: 100,
   });
-  function handleTagsButtonClick(){
-    Object.entries(promptData).forEach(([key, data]) => {
-      if (data === "") {
-        api.open({
-          message: null,
-          duration: 4,
-          description: <img src={PopImg} alt="popimg" width={200} />,
-          placement: "top",
-        });
-      }
-    });
-    fetchCourse();
+  function handleTagsButtonClick() {
+    let vacancy = Object.entries(promptData).some(([key, data]) => data.length>0);
+    if (!vacancy) {
+      api.open({
+        message: null,
+        duration: 10000000,
+        description: <img src={PopImg} alt="popimg" width={200} />,
+        placement: "top",
+      });
+    }else{
+      fetchCourse();
+    }
   }
 
-  useEffect(() => {
-  });
+  useEffect(() => {});
 
   const caption = [
     "请输入您的课程大概念",
     "请输入您的课程年级",
-    "请输入您的课程问题",
+    "请输入您的授课目标",
+    "请输入您的驱动性问题",
   ];
 
   return (
@@ -39,7 +40,7 @@ export function TagsBar() {
       {contextHolder}
       <Space direction="vertical" size={30}>
         {promptData &&
-          Object.entries(promptData).map(([key, data],index) => (
+          Object.entries(promptData).map(([key, data], index) => (
             <TagBox
               key={index}
               tagnum={key}
@@ -50,10 +51,13 @@ export function TagsBar() {
           ))}
       </Space>
       <div className="ready-prompt">
-        <button className="prompt-button" onClick={handleTagsButtonClick}>
-          生成课件
-        </button>
-        <button className="stop-button">课件生成中</button>
+        {courseStatus === 1 ? (
+          <button className="stop-button">课件生成中</button>
+        ) : (
+          <button className="prompt-button" onClick={handleTagsButtonClick}>
+            生成课件
+          </button>
+        )}
       </div>
     </Container>
   );

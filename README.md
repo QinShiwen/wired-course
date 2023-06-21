@@ -78,7 +78,7 @@ Made by React / TypeScript / Node.js / MySQL
 9. 5.23 - 编辑每一个部分的内容
 10. 5.24 - 实现导航栏伸缩(style keyframe实现)+拓展效果
 11. 5.27 逻辑图+UI小改
-11. 5.28 UI修改-TagsBar弹窗+课程展示Ui
+12. 5.28 UI修改-TagsBar弹窗+课程展示Ui
 
 # Problem and Solution
 ## Moduale and Installation
@@ -93,4 +93,4 @@ const tagsType: { [key: number]: JSX.Element } = {
 ``` 
 3. 调用gpt-3.5-turbo接口回复速度慢问题。
 4. Backend error:
- - 
+ - 一分钟之内只能请求3次gpt-turbo

@@ -7,7 +7,8 @@ import { ToolBar } from "./ToolBar";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 import ExtendImg from "../../../assets/toolbar/extend.png";
-
+import ExtendError from "../../../assets/extendError.png";
+import ExtendLoad from "../../../assets/extend-loading.gif";
 interface ContentBoxProps {
   content: string;
   part: string;
@@ -17,16 +18,17 @@ export function ContentBox({ content, part }: ContentBoxProps) {
   const [showButton, setShowButton] = useState<boolean>(false);
   const { extendCourse, setNowCourseContent } = useCourseContext();
   const [nowcontent, setNowcontent] = useState<string>(content);
-  const [edit, setEdit] = useState<boolean>(false);
   const [extendIcon, setExtendIcon] = useState<boolean>(false);
   const editorRef = useRef<HTMLDivElement>(null);
+  //0 扩展失败 1 正在扩展 2 done
+  const [extendStatus, setExtendStatus] = useState<number>(2);
 
   const items: MenuProps["items"] = [
     {
       key: "1",
       label: (
-        <span className="extend-menu" onClick={()=>extendCourse}>
-          <img src={ExtendImg} alt="extend" height={20}/>
+        <span className="extend-menu" onClick={() => extendCourse}>
+          <img src={ExtendImg} alt="extend" height={20} />
           请帮我扩展
         </span>
       ),
@@ -54,30 +56,52 @@ export function ContentBox({ content, part }: ContentBoxProps) {
   return (
     <Container>
       <div
-        className="show-content"
+        className={extendStatus !== 1 ? "show-content" : "show-loading"}
         onMouseEnter={() => setShowButton(true)}
         onMouseLeave={() => handleChange()}
-        onClick={() => setEdit(true)}
       >
-        {showButton ? (
-          <div className="edit-content">
-            <ToolBar />
-            <div
-              onMouseEnter={() => setExtendIcon(true)}
-              onMouseLeave={() => setExtendIcon(false)}
-              style={{ marginLeft: "5px" }}
-            >
-              <Dropdown menu={{ items }}>
-                {extendIcon ? (
-                  <img src={ExtendTrue} alt="img" width={30} height={30} />
-                ) : (
-                  <img src={ExtendFalse} alt="img" width={30} height={30} />
-                )}
-              </Dropdown>
-            </div>
+        {extendStatus === 1 ? (
+          <div className="extend-loading">
+            <img src={ExtendLoad} alt="extendload" width={200} />
+          </div>
+        ) : (
+          <>
+            {showButton ? (
+              <div className="edit-content">
+                <ToolBar />
+                <div
+                  onMouseEnter={() => setExtendIcon(true)}
+                  onMouseLeave={() => setExtendIcon(false)}
+                  style={{ marginLeft: "5px" }}
+                >
+                  <Dropdown menu={{ items }}>
+                    {extendIcon ? (
+                      <img src={ExtendTrue} alt="img" width={30} height={30} />
+                    ) : (
+                      <img src={ExtendFalse} alt="img" width={30} height={30} />
+                    )}
+                  </Dropdown>
+                </div>
+              </div>
+            ) : null}
+            <div className="editor" contentEditable="true" ref={editorRef} />
+          </>
+        )}
+
+        {extendStatus === 0 ? (
+          <div className="extend-error">
+            <img src={ExtendError} alt="" height={50} />
+            <span>
+              <button onClick={() => extendCourse}>重新加载</button>
+              <button
+                onClick={() => setExtendStatus(2)}
+                style={{ backgroundColor: "grey" }}
+              >
+                关闭
+              </button>
+            </span>
           </div>
         ) : null}
-        <div className="editor" contentEditable="true" ref={editorRef} />
       </div>
     </Container>
   );
@@ -122,5 +146,36 @@ const Container = styled.div`
 
   .edit-content button {
     margin-right: 5px;
+  }
+
+  .show-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #6396f7;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .extend-error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin: 15px 10px;
+      padding: 5px 10px;
+      width: 120px;
+      height: 40px;
+      background: #6396f7;
+      box-shadow: 0px 4px 9px rgba(26, 84, 196, 0.24),
+        0px 0px 8px rgba(26, 84, 196, 0.24);
+      border-radius: 49px;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
   }
 `;

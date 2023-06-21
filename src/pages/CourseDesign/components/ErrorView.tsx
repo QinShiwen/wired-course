@@ -1,11 +1,21 @@
 import styled from "styled-components";
 import FetchFail from "../../../assets/fetchfail.png";
+import { useCourseContext } from "../../../context/useCourseContext";
 export function ErrorView() {
+  const { setCourseStatus, fetchCourse } = useCourseContext();
   return (
     <Container>
       <img src={FetchFail} width={150} alt="img" />
       <h2>课件生成失败</h2>
-      <button>重新加载</button>
+      <span>
+        <button onClick={fetchCourse}>重新加载</button>
+        <button
+          onClick={() => setCourseStatus(2)}
+          style={{ backgroundColor: "grey" }}
+        >
+          关闭
+        </button>
+      </span>
     </Container>
   );
 }
@@ -27,8 +37,9 @@ const Container = styled.div`
   }
 
   button {
-    width: 150px;
-    height: 50px;
+    margin: 15px 10px;
+    width: 120px;
+    height: 40px;
     background: #6396f7;
     outline: none;
     border: none;

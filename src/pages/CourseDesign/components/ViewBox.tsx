@@ -6,11 +6,12 @@ import { useEffect, useState } from "react";
 import { useCourseContext } from "../../../context/useCourseContext";
 
 export function ViewBox() {
-  const { courseStatus } = useCourseContext();
+  const { courseStatus,paginationChange } = useCourseContext();
   const [showPagination, setShowPagination] = useState(false);
 
   function handlePaginationChange(e: number) {
     console.log(e);
+    paginationChange(e);
   }
 
   useEffect(() => {

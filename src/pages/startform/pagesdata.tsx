@@ -30,9 +30,19 @@ export const pagedata = [
     {
       title: null,
       input: {
-        tag: "grade",
-        caption: "您所教授的年级：",
-        eg: "例如：",
+        tag: "tartget",
+        caption: "请输入您的授课目标：",
+        eg: "例如：让学生了解城市规划的基本原则",
+      },
+      intro: null,
+      img: BG,
+    },
+    {
+      title: null,
+      input: {
+        tag: "questions",
+        caption: "您的驱动性问题：",
+        eg: "例如：城市是怎么形成的？",
       },
       intro: {
         name: "什么是“驱动性问题”（Driven Question）？",

@@ -50,7 +50,7 @@ export function StartPage({
       });
       return;
     }
-    updatePromptData(inputvalue, tag);
+    // updatePromptData(inputvalue, tag);
     nextSlide(slidenum);
   }
 

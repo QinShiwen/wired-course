@@ -6,18 +6,17 @@ import { ProcessView } from "./ProcessView";
 import { ToolBar } from "./ToolBar";
 import { ContentBox } from "./ContentBox";
 
-
 export function CourseView() {
-
   const { nowCourseContent, courseStatus } = useCourseContext();
 
   return (
     <Container>
       <div className="show-result">
         {courseStatus === 0 ? <ErrorView /> : null}
-        {courseStatus === 1 ? <ProcessView /> : null}
-
-        {nowCourseContent &&
+        {courseStatus === 1 ? (
+          <ProcessView />
+        ) : (
+          nowCourseContent &&
           Object.keys(nowCourseContent).map((content, key) => {
             return (
               <ContentBox
@@ -26,9 +25,9 @@ export function CourseView() {
                 content={nowCourseContent[content]}
               />
             );
-          })}
+          })
+        )}
       </div>
-      
     </Container>
   );
 }
@@ -41,10 +40,9 @@ const Container = styled.div`
   overflow: auto;
   padding-bottom: 3rem;
 
-  .show-result{
+  .show-result {
     padding-top: 2rem;
     display: flex;
     flex-direction: column;
   }
-
 `;

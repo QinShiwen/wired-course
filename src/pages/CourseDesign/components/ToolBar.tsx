@@ -32,7 +32,7 @@ export function ToolBar() {
         {commands.map((command, index) => {
           return (
             <>
-              <span>
+              <span key = {index}>
                 <img
                   src={command.img}
                   alt={command.name}

@@ -19,13 +19,19 @@ code {
   
 }
 
-.ant-notification-notice-content{
+/* .ant-notification-notice-content{
   border-radius: 20px !important;
+} */
+
+.ant-notification-notice-content img{
+  border-radius: 10px !important;
 }
 
 .ant-notification-notice-description{
   margin-inline-start:0 !important;
 }
+
+
 
 .extend-menu{
   display: flex;

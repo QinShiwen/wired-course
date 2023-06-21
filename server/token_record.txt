@@ -1,0 +1,8 @@
+1247
+1262
+Input:174 Output:849
+Input:174 Output:881
+Input:174 Output:978
+Input:174 Output:1109
+Input:174 Output:1095
+Input:174 Output:1175

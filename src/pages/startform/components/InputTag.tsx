@@ -11,13 +11,17 @@ interface InputTagProps {
 export function InputTag({ caption, eg, tag, setInputvalue }: InputTagProps) {
   const { updatePromptData } = useCourseContext();
   const { TextArea } = Input;
+  function handleChange(value:any){
+    updatePromptData(value,tag)
+    setInputvalue(value)
+  }
   return (
     <Container>
       <div className="caption">{caption}</div>
       <TextArea
         autoSize
         placeholder={eg}
-        onChange={(e)=>setInputvalue(e.target.value)}
+        onChange={(e)=>handleChange(e.target.value)}
       />
     </Container>
   );
