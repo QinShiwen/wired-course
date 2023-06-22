@@ -30,7 +30,7 @@ export const pagedata = [
     {
       title: null,
       input: {
-        tag: "tartget",
+        tag: "target",
         caption: "请输入您的授课目标：",
         eg: "例如：让学生了解城市规划的基本原则",
       },

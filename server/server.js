@@ -68,7 +68,6 @@ app.post("/prompt-course", async (req, res) => {
     target +
     questions +
     `请返回装着markdown文本的json文件：{part1:课程导入,part2:教学目标,part3:教学方案,part4:教学步骤, part5:评估与展示}`;
-  // console.log(request);
   let content = await gptfetch(request);
   console.log("prompt-course data", content);
   if (content === false) {

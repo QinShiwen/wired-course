@@ -146,8 +146,8 @@ testcourse[i] = marked.parse(testcourse[i])
 
 专门使用一个数组存储课件的历史，包含prompt数据与当前课件等。
 
-```tsx
-//fetchCourse函数逻辑
+```ts
+
 ```
 
 
