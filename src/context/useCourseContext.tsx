@@ -15,10 +15,11 @@ interface CourseContextValue {
   setNowCourseContent: (value: any) => void;
   updatePromptData: (value: any, key: string) => void;
   fetchCourse: () => void;
-  extendCourse: (part: string) => void;
+  extendCourse: (part: string) => any;
   handleStyleCommand: (command: string) => void;
   paginationChange: (page: number) => void;
   setCourseStatus: (status: number) => void;
+  updateCourseContent: (content: any) => void;
 }
 
 interface promptData {
@@ -98,7 +99,6 @@ const CourseProvider = (props: any) => {
       ...promptData,
       [key]: value,
     }));
-    // console.log(promptData);
   }
 
   function updateCourseContent() {}
@@ -174,19 +174,24 @@ const CourseProvider = (props: any) => {
     var textContent = htmlContent.replace(/<[^>]+>/g, "");
     console.log(textContent);
     let response = await axios
-      .post("http://localhost:5000/extend-course", {
+      .post("http://localhost:5000/prompt-extend", {
         content: textContent,
       })
       .catch((err) => {
         console.log(err);
-        setCourseStatus(() => 0);
         return;
       });
     if (response?.data.res.status === 1) {
-      let extendCourse = JSON.parse(response.data.res.data);
+      let extendCourse = marked.parse(response.data.res.data);
+      // console.log(nowCourseContent[part] + extendCourse);
+      let historycontainer = courseHistory;
+      historycontainer[nowCourseIndex].courseContent[part] =
+        nowCourseContent[part] + extendCourse;
+      setCourseHistory(() => historycontainer);
+      localStorage.setItem("coursehistory", JSON.stringify(courseHistory));
       setNowCourseContent(() => ({
         ...nowCourseContent,
-        [part]: extendCourse,
+        [part]: nowCourseContent[part] + extendCourse,
       }));
       return true;
     } else {
@@ -211,6 +216,7 @@ const CourseProvider = (props: any) => {
     extendCourse,
     paginationChange,
     setCourseStatus,
+    updateCourseContent,
   };
 
   return <CourseContext.Provider value={contextValue} {...props} />;

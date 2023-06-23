@@ -1,22 +1,27 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { CourseDesign } from "../CourseDesign/CourseDesign";
-import { MyCourse } from "./MyCourse";
+import { Route, Routes } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import styled, { keyframes } from "styled-components";
 import { useState } from "react";
 import NavPop from "../../assets/popout-nav.png";
-interface CourseHomeProps {}
+import { CourseDesign } from "../CourseDesign/CourseDesign";
+import { MyCourse } from "../MyCourse/MyCourse";
+import designIcon from "../../assets/router/course-design-1.png"
+import collectIcon from "../../assets/router/course-collect-2.png"
 
 export const routesInfo = [
   {
     name: "设计课程",
-    path: "/",
+    path: "/coursehome",
     component: CourseDesign,
+    icon: designIcon,
+    active: true,
   },
   {
     name: "我的课程",
     path: "/my-course",
     component: MyCourse,
+    icon: collectIcon,
+    active: false,
   },
 ];
 
@@ -35,8 +40,8 @@ export function CourseHome() {
 
         <div className="nav-view">
           <Routes>
-            <Route path="/*" element={<CourseDesign />} />
-            <Route path="/mycourse" element={<MyCourse />} />
+            <Route path="/" element={<CourseDesign />} />
+            <Route path="/my-course" element={<MyCourse />} />
           </Routes>
         </div>
       </Container>

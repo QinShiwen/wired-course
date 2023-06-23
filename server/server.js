@@ -14,7 +14,7 @@ app.use(express.json());
 async function gptfetch(request) {
   console.log("request", request);
   //
-  const Authorization = ``;
+  const Authorization = `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`;
   try {
     let retPrompt = false;
     await axios
@@ -96,13 +96,23 @@ app.post("/prompt-extend", async (req, res) => {
   console.log(content);
   const request =
   `拓展以下内容并返回markdown格式的文本：` + content; 
-  // const part = req.body.part;
-  // console.log(part, content);
-  // const request =
-  //   `请帮我扩展以下` + part + `并返回类似的markdown格式的文本：` + content;
-  // let data = await gptfetch(request);
-  // console.log("prompt-extend data", data);
-  // res.json({ res: data });
+  let data = await gptfetch(request);
+  console.log("prompt-extend data", data);
+  if (data === false) {
+    res.json({
+      res: {
+        status: 0,
+        data: null,
+      },
+    });
+  } else {
+    res.json({
+      res: {
+        status: 1,
+        data: data,
+      },
+    });
+  }
 });
 
 const port = 5000;

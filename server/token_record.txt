@@ -5,4 +5,4 @@ Input:174 Output:881
 Input:174 Output:978
 Input:174 Output:1109
 Input:174 Output:1095
-Input:174 Output:1175Input:135 Output:1099/nInput:174 Output:922/nInput:174 Output:880/nInput:174 Output:1078/nInput:174 Output:881/nInput:174 Output:1267/nInput:174 Output:1213/nInput:174 Output:1495/nInput:174 Output:849/nInput:174 Output:1075/nInput:174 Output:1207/nInput:174 Output:1136/nInput:174 Output:940/nInput:174 Output:926/nInput:174 Output:1104/nInput:179 Output:923/n
+Input:174 Output:1175Input:135 Output:1099/nInput:174 Output:922/nInput:174 Output:880/nInput:174 Output:1078/nInput:174 Output:881/nInput:174 Output:1267/nInput:174 Output:1213/nInput:174 Output:1495/nInput:174 Output:849/nInput:174 Output:1075/nInput:174 Output:1207/nInput:174 Output:1136/nInput:174 Output:940/nInput:174 Output:926/nInput:174 Output:1104/nInput:179 Output:923/nInput:106 Output:783/nInput:106 Output:581/nInput:106 Output:669/nInput:106 Output:595/nInput:106 Output:668/nInput:174 Output:853/nInput:178 Output:1465/nInput:231 Output:217/n

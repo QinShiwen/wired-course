@@ -58,9 +58,9 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 5rem;
+  height: 4rem;
   width: 100%;
-  background: #d9d9d9;
+  background: #98B3CB;
 
   h1 {
     margin-left: 4rem;
