@@ -9,6 +9,10 @@ import { ContentBox } from "./ContentBox";
 export function CourseView() {
   const { nowCourseContent, courseStatus } = useCourseContext();
 
+  // useEffect(() => {
+  //   console.log(nowCourseContent);
+  // }, [nowCourseContent]);
+
   return (
     <Container>
       <div className="show-result">

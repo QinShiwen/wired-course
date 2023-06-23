@@ -52,8 +52,8 @@
 - 页面数据模型
 ```ts
 {
-    userinfo:{}
-    navbar:{}
+    navbar:{} //导航栏
+    userinfo:{}  //用户信息
     tags:{}
     show: courseinfo | error | progress
 }
@@ -82,16 +82,30 @@
 }
 ```
 ### 主要函数功能逻辑
-1. fetchCourse
+1. fetchCourse 获取课程
   - 将状态设置为loading；
   - 整理Promptdata传给后端；
   - 后端工作流：
-    - 封装请求数据
-    - 请求gpt API
-    - 判断请求返回结果：若成功则封装数据传给前端；若失败则返回失败信息
-  - 若返回数据status为1->状态设为成功，显示课程；否则状态设为失败，出现失败logo
+    - 封装请求数据；
+    - 请求gpt API；
+    - 判断请求返回结果：若成功则封装数据传给前端；若失败则返回失败信息；
+  - 若返回数据status为1->状态设为成功；否则状态设为失败；
+  - 更新课件与课件历史记录：
+    - 把最新生成的课件push到courseHistory中
+    - nowCourseIndex+1
+    - 将当前课件设置为返回的数据
 
-2. 
+2. extendCourse 拓展课程
+  - 拓展组件状态设置为loading
+  
+3. paginationChange 翻页控制
+  - 点击第n页
+  - 
+  - 注意：ContentBox的富文本编辑器对应ref的innerHTML是自身组件下的state元素nowcontent，在翻页变更内容后，要使用set的元素对nowcontent进行更新再重新赋值给ref才会发生变化。
+
+4. 更新富文本编辑后的内容
+
+每一次修改tags与课件时都会同时修改历史记录的信息
 ### 实现难点
 
 #### 全局数据共享

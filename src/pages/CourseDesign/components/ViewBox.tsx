@@ -6,24 +6,29 @@ import { useEffect, useState } from "react";
 import { useCourseContext } from "../../../context/useCourseContext";
 
 export function ViewBox() {
-  const { courseStatus,paginationChange } = useCourseContext();
+  const { courseStatus, paginationChange, courseHistory,nowCourseIndex } = useCourseContext();
   const [showPagination, setShowPagination] = useState(false);
 
   function handlePaginationChange(e: number) {
-    console.log(e);
     paginationChange(e);
   }
 
+  function handlePaginationShow(e: MouseEvent) {
+    let mouseY = e.clientY;
+    let windowH = window.innerHeight;
+    if (mouseY >= windowH - 50) {
+      setShowPagination(true);
+    } else {
+      setShowPagination(false);
+    }
+  }
+
   useEffect(() => {
-    window.addEventListener("mousemove", (e) => {
-      let mouseY = e.clientY;
-      let windowH = window.innerHeight;
-      if (mouseY >= windowH - 50) {
-        setShowPagination(true);
-      } else {
-        setShowPagination(false);
-      }
-    });
+    if (courseStatus === 2 && courseHistory.length > 1) {
+      window.addEventListener("mousemove", handlePaginationShow);
+    } else {
+      window.removeEventListener("mousemove", handlePaginationShow);
+    }
   });
 
   return (
@@ -33,8 +38,8 @@ export function ViewBox() {
       {courseStatus !== 1 && showPagination ? (
         <div className="pagination">
           <Pagination
-            defaultCurrent={1}
-            total={20}
+            defaultCurrent={nowCourseIndex + 1}
+            total={courseHistory.length * 10}
             onChange={(e) => handlePaginationChange(e)}
           />
         </div>

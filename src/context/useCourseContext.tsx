@@ -44,30 +44,24 @@ const useCourseContext = () => {
   };
 };
 
-
-let testcourse: { [key: string]: string } = {
-  "part1": "## 课程导入\n\n让学生观察周围校园中的大树，引导他们思考大树倒下会发生什么事情，并提出驱动性问题：“如果大 树倒了，会砸到我们的教学楼吗？”",
-  "part2": "## 教学目标\n\n1. 能够利用工具，测量树的高度。\n2. 能够运用数学知识，计算出树的高度。\n3. 能够发散思维，探究大树倒下的影响。",
-  "part3": "## 教学方案\n\n本课程采用PBL模式进行教学。在学生的学习过程中，教师会给予适当的指导与帮助，但不会直接给出答案。学生应该通过自己的思考与探究来完成任务。\n\n本课程所需素材：卷尺、树棍等测量工具。\n\n学生分组完成任务，每组学生需要对一颗大树进行测量，并探究该树倒下可能会产生的影响。",
-  "part4": "## 教学步骤\n\n1. 教师引导学生进行思考，讨论大树倒下可能会产生的影响。\n2. 学生分组完成任务。每组学生选择 一颗大树进行测量，记录下树的高度。\n3. 学生利用数学知识，计算出该树距离教学楼有多远，判断是否会影响教学楼的安全。\n4. 学生总结探究，分享各自的发现与感悟。\n5. 教师进行总结和点评，提升学生感知与认知水平。",
-  "part5": "## 评估与展示\n\n学生提交测量数据与计算结果，展示自己的探究成果和思考过程，并进行自我评估。教师会根据学生 的表现，反馈学习成果和方向指引。"
-}
-
-for(let i in testcourse){
-  testcourse[i] = marked.parse(testcourse[i])
-}
-
 const CourseProvider = (props: any) => {
   const navigate = useNavigate();
 
   // start page slide control
   const [slide, setSlide] = useState<number>(0);
 
+  // data history
+  const [courseHistory, setCourseHistory] = useState<courseData[]>(() => {
+    const storedData = localStorage.getItem("coursehistory");
+    return storedData ? JSON.parse(storedData) : [];
+  });
+
   const [promptData, setPromptData] = useState<promptData>(() => {
     const storedData = sessionStorage.getItem("promptdata");
-    console.log(storedData);
     return storedData
       ? JSON.parse(storedData)
+      : courseHistory.length > 0
+      ? courseHistory[courseHistory.length - 1].promptData
       : {
           concept: "",
           grade: "",
@@ -76,14 +70,15 @@ const CourseProvider = (props: any) => {
         };
   });
 
-  // data history
-  const [courseHistory, setCourseHistory] = useState<courseData[]>([]);
-
   // record current course index
   const [nowCourseIndex, setNowCourseIndex] = useState<number>(0);
 
   // record current course content
-  const [nowCourseContent, setNowCourseContent] = useState<any>(null);
+  const [nowCourseContent, setNowCourseContent] = useState<any>(() =>
+    courseHistory.length > 0
+      ? courseHistory[courseHistory.length - 1].courseContent
+      : null
+  );
 
   // record current state of course  0:error 1:loading 2:done
   const [courseStatus, setCourseStatus] = useState<number>(2);
@@ -106,14 +101,12 @@ const CourseProvider = (props: any) => {
     // console.log(promptData);
   }
 
+  function updateCourseContent() {}
+
   function paginationChange(page: number) {
-    //
-    // save the current course content
-    // setCourseHistory((prev)=>[...prev, {promptData: promptData, courseContent: nowCourseContent}])
-    // setNowCourseIndex(()=>page-1)
-    // setNowCourseContent(()=>courseHistory[page-1].courseContent)
-    // setPromptData(()=>courseHistory[page-1].promptData)
-    // setCourseStatus(()=>2)
+    setPromptData(() => courseHistory[page - 1].promptData);
+    setNowCourseIndex(() => page - 1);
+    setNowCourseContent(() => courseHistory[page - 1].courseContent);
   }
 
   function handleStyleCommand(command: string) {
@@ -152,15 +145,24 @@ const CourseProvider = (props: any) => {
     console.log(response?.data.res);
     //成功返回课程
     if (response?.data.res.status === 1) {
-      setCourseStatus(() => 2);
       let resCourse = JSON.parse(response.data.res.data);
+      console.log(resCourse);
       for (let i in resCourse) {
         resCourse[i] = marked.parse(resCourse[i]);
       }
       setNowCourseContent(() => resCourse);
       console.log(nowCourseContent);
-      //setCourseHistory((prev)=>[...prev, {promptData: promptData, courseContent: resCourse}])
-      //localStorage.setItem('course-history', JSON.stringify(courseHistory))
+      let historycontainer = courseHistory;
+      historycontainer.push({
+        promptData: promptData,
+        courseContent: resCourse,
+      });
+      setCourseHistory(() => historycontainer);
+      setNowCourseIndex(() => courseHistory.length);
+
+      localStorage.setItem("coursehistory", JSON.stringify(courseHistory));
+      console.log(courseHistory);
+      setCourseStatus(() => 2);
     } else {
       setCourseStatus(() => 0);
     }
@@ -168,10 +170,12 @@ const CourseProvider = (props: any) => {
 
   //extend course
   async function extendCourse(part: string) {
-    let reqpart = nowCourseContent[part];
+    let htmlContent = nowCourseContent[part];
+    var textContent = htmlContent.replace(/<[^>]+>/g, "");
+    console.log(textContent);
     let response = await axios
       .post("http://localhost:5000/extend-course", {
-        content: reqpart,
+        content: textContent,
       })
       .catch((err) => {
         console.log(err);
@@ -185,7 +189,7 @@ const CourseProvider = (props: any) => {
         [part]: extendCourse,
       }));
       return true;
-    }else{
+    } else {
       return false;
     }
   }

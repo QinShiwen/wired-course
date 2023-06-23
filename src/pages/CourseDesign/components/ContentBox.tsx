@@ -17,7 +17,7 @@ interface ContentBoxProps {
 export function ContentBox({ content, part }: ContentBoxProps) {
   const [showButton, setShowButton] = useState<boolean>(false);
   const { extendCourse, setNowCourseContent } = useCourseContext();
-  const [nowcontent, setNowcontent] = useState<string>(content);
+  const [nowcontent, setNowcontent] = useState<string>(()=>content);
   const [extendIcon, setExtendIcon] = useState<boolean>(false);
   const editorRef = useRef<HTMLDivElement>(null);
   //0 扩展失败 1 正在扩展 2 done
@@ -27,7 +27,7 @@ export function ContentBox({ content, part }: ContentBoxProps) {
     {
       key: "1",
       label: (
-        <span className="extend-menu" onClick={() => extendCourse}>
+        <span className="extend-menu" onClick={() => extendCourse(part)}>
           <img src={ExtendImg} alt="extend" height={20} />
           请帮我扩展
         </span>
@@ -48,10 +48,11 @@ export function ContentBox({ content, part }: ContentBoxProps) {
   }
 
   useEffect(() => {
-    if (editorRef.current) {
+    if (editorRef.current && content) {
+      setNowcontent(()=>content);
       editorRef.current.innerHTML = nowcontent;
     }
-  });
+  }, [nowcontent, content]);
 
   return (
     <Container>

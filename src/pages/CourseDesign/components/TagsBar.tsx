@@ -13,7 +13,9 @@ export function TagsBar() {
     top: 100,
   });
   function handleTagsButtonClick() {
-    let vacancy = Object.entries(promptData).some(([key, data]) => data.length>0);
+    let vacancy = Object.entries(promptData).some(
+      ([key, data]) => data.length > 0
+    );
     if (!vacancy) {
       api.open({
         message: null,
@@ -21,7 +23,7 @@ export function TagsBar() {
         description: <img src={PopImg} alt="popimg" width={200} />,
         placement: "top",
       });
-    }else{
+    } else {
       fetchCourse();
     }
   }
@@ -73,6 +75,7 @@ const navbarfadeIn = keyframes`
 `;
 
 const Container = styled.div`
+  // border-radius: 0 20px 20px 0;
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 4rem;

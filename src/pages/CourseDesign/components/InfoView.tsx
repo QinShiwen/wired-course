@@ -2,9 +2,7 @@ import styled from "styled-components";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 
-const data = {
-  username: "Hi,张三",
-};
+
 const items: MenuProps["items"] = [
   {
     key: "1",
@@ -47,7 +45,7 @@ const items: MenuProps["items"] = [
 export function InfoView() {
   return (
     <Container>
-      <h1>{data.username}</h1>
+      <span>露露</span>
       <Dropdown menu={{ items }}>
         <div className="avatar"></div>
       </Dropdown>
@@ -58,6 +56,7 @@ export function InfoView() {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   height: 5rem;
   width: 100%;
@@ -74,8 +73,14 @@ const Container = styled.div`
     height: 2.5rem;
     border-radius: 50%;
     background: #ffffff;
-    margin-left: auto;
+    
     margin-right: 2rem;
     cursor: pointer;
+  }
+
+  span{
+    margin-left: auto;
+    margin-right: 1rem;
+    font-size: 1.5rem;
   }
 `;
