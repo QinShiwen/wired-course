@@ -14,7 +14,7 @@ app.use(express.json());
 async function gptfetch(request) {
   console.log("request", request);
   //
-  const Authorization = `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`;
+  const Authorization = ``;
   try {
     let retPrompt = false;
     await axios
@@ -22,6 +22,7 @@ async function gptfetch(request) {
         "https://api.openai.com/v1/chat/completions",
         {
           model: "gpt-3.5-turbo-0613",
+          // model: "ada",
           messages: [{ role: "user", content: request }],
         },
         {

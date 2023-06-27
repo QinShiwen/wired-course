@@ -1,9 +1,12 @@
 # 基于 GPT 模型的备课平台
 
 ## 系统功能分析
+### 路由数据模型
+```ts
+
+```
 
 ## 备课系统
-
 ### 系统架构
 
 - Course Design
@@ -97,7 +100,7 @@
 
 2. extendCourse 拓展课程
   - 拓展组件状态设置为loading
-  
+  - 
 3. paginationChange 翻页控制
   - 点击第n页
   - 

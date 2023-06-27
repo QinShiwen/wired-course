@@ -5,33 +5,15 @@ import { useState } from "react";
 import NavPop from "../../assets/popout-nav.png";
 import { CourseDesign } from "../CourseDesign/CourseDesign";
 import { MyCourse } from "../MyCourse/MyCourse";
-import designIcon from "../../assets/router/course-design-1.png"
-import collectIcon from "../../assets/router/course-collect-2.png"
-
-export const routesInfo = [
-  {
-    name: "设计课程",
-    path: "/coursehome",
-    component: CourseDesign,
-    icon: designIcon,
-    active: true,
-  },
-  {
-    name: "我的课程",
-    path: "/my-course",
-    component: MyCourse,
-    icon: collectIcon,
-    active: false,
-  },
-];
+import { RouterProvider } from "../../context/useRouerContext";
 
 export function CourseHome() {
   const [shownav, setShownav] = useState(true);
   return (
-    <>
-      <Container>
+    <Container>
+      <RouterProvider>
         <div className="pop-nav" onClick={() => setShownav(!shownav)}>
-          <img src = {NavPop} alt="img" width={30}/>
+          <img src={NavPop} alt="img" width={25} />
         </div>
 
         <div className={shownav ? "slide-in" : "slide-out"}>
@@ -44,8 +26,8 @@ export function CourseHome() {
             <Route path="/my-course" element={<MyCourse />} />
           </Routes>
         </div>
-      </Container>
-    </>
+      </RouterProvider>
+    </Container>
   );
 }
 
@@ -75,6 +57,7 @@ const Container = styled.div`
     margin-left: 1rem;
     cursor: pointer;
   }
+
   .slide-in {
     animation: 0.2s ease-in-out 0s 1 normal forwards running ${navbarSlideIn};
   }

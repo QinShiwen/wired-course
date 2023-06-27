@@ -14,7 +14,7 @@ export default function App() {
         <CourseProvider>
           <Routes>
             <Route path="/start-form" element={<StartForm />} />
-            <Route path="/coursehome" element={<CourseHome />} />
+            <Route path="/coursehome/*" element={<CourseHome />} />
           </Routes>
         </CourseProvider>
       </Router>

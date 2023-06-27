@@ -38,7 +38,7 @@ export function ViewBox() {
       {courseStatus !== 1 && showPagination ? (
         <div className="pagination">
           <Pagination
-            defaultCurrent={nowCourseIndex + 1}
+            defaultCurrent={nowCourseIndex+1}
             total={courseHistory.length * 10}
             onChange={(e) => handlePaginationChange(e)}
           />

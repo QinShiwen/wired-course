@@ -72,7 +72,7 @@ const CourseProvider = (props: any) => {
   });
 
   // record current course index
-  const [nowCourseIndex, setNowCourseIndex] = useState<number>(0);
+  const [nowCourseIndex, setNowCourseIndex] = useState<number>(courseHistory.length>0?courseHistory.length-1:0);
 
   // record current course content
   const [nowCourseContent, setNowCourseContent] = useState<any>(() =>
@@ -94,7 +94,7 @@ const CourseProvider = (props: any) => {
         })();
   }
 
-  function updatePromptData(value: any, key: string) {
+  function updatePromptData(value: any, key: any) {
     setPromptData(() => ({
       ...promptData,
       [key]: value,

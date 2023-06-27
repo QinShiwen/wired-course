@@ -75,15 +75,16 @@ const navbarfadeIn = keyframes`
 `;
 
 const Container = styled.div`
-  // border-radius: 0 20px 20px 0;
   padding-left: 2rem;
   padding-right: 2rem;
+  z-index: 0;
   padding-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: #f3f7ff;
   height: 100vh;
-  box-shadow: 5px 4px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.25);
   animation: 0.2s ease-in-out 0s 1 normal forwards running ${navbarfadeIn};
   .ready-prompt {
     margin-top: 2rem;

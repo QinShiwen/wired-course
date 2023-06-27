@@ -60,7 +60,8 @@ const Container = styled.div`
   align-items: center;
   height: 4rem;
   width: 100%;
-  background: #98B3CB;
+  background: #FBF4E5;
+  z-index: -1;
 
   h1 {
     margin-left: 4rem;

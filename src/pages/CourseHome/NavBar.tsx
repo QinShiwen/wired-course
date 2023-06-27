@@ -1,31 +1,51 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { routesInfo } from "./CourseHome";
+import {
+  useRouterContext,
+} from "../../context/useRouerContext";
 import "animate.css";
+import { useEffect } from "react";
+import Logo from "../../assets/logo.png";
+import navBG from "../../assets/nav-bg.png";
+
 
 export function NavBar() {
+  const { router,updateActive } = useRouterContext();
+
+  useEffect(() => {
+    console.log(router);
+  }, [router]);
+
   return (
-    <Container>
-      {routesInfo.map((route, index) => (
-        <NavLink to={route.path} key={index} >
-          <div className={route.active?"nav-active" : "nav-box"}>
-            <img src={route.icon} alt="router" />
-            {route.name}
-          </div>
-        </NavLink>
-      ))}
-    </Container>
+      <Container>
+        <div className="logo"><img src = {Logo} alt="logo" height={28}/></div>
+        {router.map((route, index) => (
+          <NavLink to={route.path} key={index} onClick = {()=>updateActive(index)}>
+            <div className={route.active ? "nav-active" : "nav-box"}>
+              <img src={route.active ? route.icon1 : route.icon2} alt="router" />
+              {route.name}
+            </div>
+          </NavLink>
+        ))}
+      </Container>
   );
 }
 
 const Container = styled.div`
   z-index: 99;
-  padding-top: 5rem;
   height: 100vh;
   box-shadow: 5px 4px 25px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(${navBG});
+  background-size: cover;
+
+  .logo{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    margin-bottom: 3rem;
+  }
 
   a {
     text-decoration: none;
@@ -34,38 +54,36 @@ const Container = styled.div`
 
   .nav-box {
     display: flex;
-    color: #A098AE;
+    color: #a098ae;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     margin: 10px;
-    box-shadow: 0px 20px 50px rgba(46, 46, 46, 0.05);
     width: 150px;
     height: 48px;
     img {
-      padding: 5px;
+      padding: 10px;
       width: 40px;
+      height: 40px;
       margin-right: 10px;
     }
   }
 
-  .nav-active{
+  .nav-active {
     display: flex;
     color: #6396f7;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     margin: 10px;
     width: 150px;
     height: 48px;
-    img{
-      padding: 5px;
+    img {
+      padding: 10px;
       background: #6396f7;
       width: 40px;
+      height: 40px;
       border-radius: 10px;
       margin-right: 10px;
       box-shadow: 0px 10px 10px rgba(99, 150, 247, 0.5);
     }
   }
-
 `;

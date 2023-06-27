@@ -43,7 +43,8 @@ const Container = styled.div`
   flex-direction: column;
   overflow: auto;
   padding-bottom: 3rem;
-
+  font-family: "Songti SC";
+  
   .show-result {
     padding-top: 2rem;
     display: flex;
