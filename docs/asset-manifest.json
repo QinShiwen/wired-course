@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/wired-course/static/css/main.21699be2.css",
+    "main.js": "/wired-course/static/js/main.6a6b72b4.js",
+    "static/js/787.e159e69d.chunk.js": "/wired-course/static/js/787.e159e69d.chunk.js",
+    "static/media/fetch-loading.gif": "/wired-course/static/media/fetch-loading.c023ecfb7b1743395384.gif",
+    "static/media/nav-bg.png": "/wired-course/static/media/nav-bg.e86cf1029a9606533596.png",
+    "static/media/extend-loading.gif": "/wired-course/static/media/extend-loading.b5971bda655fc7aaf8c2.gif",
+    "static/media/popin-tags.png": "/wired-course/static/media/popin-tags.418903eb77e89c2f7d48.png",
+    "static/media/popout-tags.png": "/wired-course/static/media/popout-tags.c2a0f34e6ce9a5288401.png",
+    "static/media/input-pop.png": "/wired-course/static/media/input-pop.683fbe1e3cf01515f24a.png",
+    "static/media/bg.png": "/wired-course/static/media/bg.5a20106945ee71cd70ae.png",
+    "static/media/extendError.png": "/wired-course/static/media/extendError.8703306ab498de476c1c.png",
+    "static/media/fetchfail.png": "/wired-course/static/media/fetchfail.57c015eb3336c6cb275a.png",
+    "static/media/logo.png": "/wired-course/static/media/logo.81fa94d6a3226842761d.png",
+    "index.html": "/wired-course/index.html",
+    "main.21699be2.css.map": "/wired-course/static/css/main.21699be2.css.map",
+    "main.6a6b72b4.js.map": "/wired-course/static/js/main.6a6b72b4.js.map",
+    "787.e159e69d.chunk.js.map": "/wired-course/static/js/787.e159e69d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.21699be2.css",
+    "static/js/main.6a6b72b4.js"
+  ]
+}
