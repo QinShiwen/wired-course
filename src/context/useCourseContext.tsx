@@ -131,7 +131,7 @@ const CourseProvider = (props: any) => {
     setCourseStatus(() => 1);
     //2. 获取课程数据
     const response = await axios
-      .post("http://localhost:5000/prompt-course", {
+      .post("http://34.94.63.61:5000/prompt-course", {
         concept: promptData.concept,
         grade: promptData.grade,
         target: promptData.target,
@@ -174,7 +174,7 @@ const CourseProvider = (props: any) => {
     var textContent = htmlContent.replace(/<[^>]+>/g, "");
     console.log(textContent);
     let response = await axios
-      .post("http://localhost:5000/prompt-extend", {
+      .post("http://34.94.63.61:5000/prompt-extend", {
         content: textContent,
       })
       .catch((err) => {

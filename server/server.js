@@ -40,7 +40,7 @@ async function gptfetch(request) {
           response.data.choices[0].message.content
         );
         console.log("response tokens", response.data.usage.total_tokens);
-        let record = `Input:` + response.data.usage.prompt_tokens + ` Output:` +response.data.usage.completion_tokens + `/n`;
+        let record = response.data.usage.prompt_tokens + ` `+ response.data.usage.completion_tokens + `\n`;
         fs.appendFileSync(
           filePath,
           String(record),
