@@ -1,5 +1,6 @@
 # Introduction
 A platform that support teachers to brainstorm their PBL course by AI.
+"homepage": "http://www.qinsw666.top/wired-course/",
 
 # System Design
 Made by React / TypeScript / Node.js / MySQL

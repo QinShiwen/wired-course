@@ -4,17 +4,12 @@ import {
   useRouterContext,
 } from "../../context/useRouerContext";
 import "animate.css";
-import { useEffect } from "react";
 import Logo from "../../assets/logo.png";
 import navBG from "../../assets/nav-bg.png";
 
 
 export function NavBar() {
   const { router,updateActive } = useRouterContext();
-
-  useEffect(() => {
-    console.log(router);
-  }, [router]);
 
   return (
       <Container>

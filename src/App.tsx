@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { CourseHome } from "./pages/CourseHome/CourseHome";
 import { StartForm } from "./pages/StartForm/StartForm";
 import "antd/dist/reset.css";
