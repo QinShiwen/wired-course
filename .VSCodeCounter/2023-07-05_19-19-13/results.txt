@@ -1,0 +1,91 @@
+Date : 2023-07-05 19:19:13
+Directory : d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2
+Total : 42 files,  19451 codes, 42 comments, 214 blanks, all 19707 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          5 |     17,125 |          0 |          6 |     17,131 |
+| TypeScript JSX     |         25 |      1,608 |         31 |        137 |      1,776 |
+| Markdown           |          3 |        513 |          0 |         46 |        559 |
+| JavaScript         |          1 |        110 |          3 |          8 |        121 |
+| CSS                |          2 |         34 |          3 |         10 |         47 |
+| JSON with Comments |          1 |         26 |          0 |          1 |         27 |
+| HTML               |          1 |         20 |          0 |          1 |         21 |
+| TypeScript         |          3 |         14 |          5 |          5 |         24 |
+| XML                |          1 |          1 |          0 |          0 |          1 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                          | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                             |         42 |     19,451 |         42 |        214 |     19,707 |
+| . (Files)                                                                                                     |          4 |     16,516 |          0 |         13 |     16,529 |
+| public                                                                                                        |          2 |         45 |          0 |          2 |         47 |
+| report                                                                                                        |          1 |        157 |          0 |         32 |        189 |
+| server                                                                                                        |          3 |        808 |          3 |         10 |        821 |
+| src                                                                                                           |         32 |      1,925 |         39 |        157 |      2,121 |
+| src (Files)                                                                                                   |         10 |        354 |         18 |         27 |        399 |
+| src\context                                                                                                   |          2 |        296 |         13 |         36 |        345 |
+| src\pages                                                                                                     |         20 |      1,275 |          8 |         94 |      1,377 |
+| src\pages\CourseDesign                                                                                        |         10 |        783 |          5 |         50 |        838 |
+| src\pages\CourseDesign (Files)                                                                                |          1 |         78 |          0 |          5 |         83 |
+| src\pages\CourseDesign\components                                                                             |          9 |        705 |          5 |         45 |        755 |
+| src\pages\CourseHome                                                                                          |          2 |        148 |          0 |         12 |        160 |
+| src\pages\MyCourse                                                                                            |          1 |          7 |          0 |          2 |          9 |
+| src\pages\StartForm                                                                                           |          6 |        317 |          3 |         26 |        346 |
+| src\pages\StartForm (Files)                                                                                   |          2 |        101 |          1 |          5 |        107 |
+| src\pages\StartForm\components                                                                                |          4 |        216 |          2 |         21 |        239 |
+| src\pages\widgets                                                                                             |          1 |         20 |          0 |          4 |         24 |
++---------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                      | language           | code       | comment    | blank      | total      |
++---------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\README.md                                         | Markdown           |         88 |          0 |          9 |         97 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\package-lock.json                                 | JSON               |     16,342 |          0 |          1 |     16,343 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\package.json                                      | JSON               |         60 |          0 |          2 |         62 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\public\index.html                                 | HTML               |         20 |          0 |          1 |         21 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\public\manifest.json                              | JSON               |         25 |          0 |          1 |         26 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\report\report.md                                  | Markdown           |        157 |          0 |         32 |        189 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\server\package-lock.json                          | JSON               |        689 |          0 |          1 |        690 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\server\package.json                               | JSON               |          9 |          0 |          1 |         10 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\server\server.js                                  | JavaScript         |        110 |          3 |          8 |        121 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\App.css                                       | CSS                |          4 |          0 |          1 |          5 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\App.test.tsx                                  | TypeScript JSX     |          8 |          0 |          2 |         10 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\App.tsx                                       | TypeScript JSX     |         15 |          7 |          2 |         24 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\Result.md                                     | Markdown           |        268 |          0 |          5 |        273 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\context\useCourseContext.tsx                  | TypeScript JSX     |        189 |         12 |         25 |        226 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\context\useRouerContext.tsx                   | TypeScript JSX     |        107 |          1 |         11 |        119 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\index.css                                     | CSS                |         30 |          3 |          9 |         42 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\index.tsx                                     | TypeScript JSX     |         14 |          3 |          3 |         20 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\logo.svg                                      | XML                |          1 |          0 |          0 |          1 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\CourseDesign.tsx           | TypeScript JSX     |         78 |          0 |          5 |         83 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\ContentBox.tsx  | TypeScript JSX     |        183 |          2 |          9 |        194 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\CourseView.tsx  | TypeScript JSX     |         46 |          3 |          5 |         54 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\ErrorView.tsx   | TypeScript JSX     |         57 |          0 |          2 |         59 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\InfoView.tsx    | TypeScript JSX     |         83 |          0 |          5 |         88 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\ProcessView.tsx | TypeScript JSX     |         22 |          0 |          3 |         25 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\TagBox.tsx      | TypeScript JSX     |         60 |          0 |          4 |         64 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\TagsBar.tsx     | TypeScript JSX     |        122 |          0 |          6 |        128 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\ToolBar.tsx     | TypeScript JSX     |         66 |          0 |          4 |         70 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseDesign\components\ViewBox.tsx     | TypeScript JSX     |         66 |          0 |          7 |         73 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseHome\CourseHome.tsx               | TypeScript JSX     |         68 |          0 |          7 |         75 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\CourseHome\NavBar.tsx                   | TypeScript JSX     |         80 |          0 |          5 |         85 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\MyCourse\MyCourse.tsx                   | TypeScript JSX     |          7 |          0 |          2 |          9 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\StartForm\StartForm.tsx                 | TypeScript JSX     |         43 |          1 |          4 |         48 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\StartForm\components\InputTag.tsx       | TypeScript JSX     |         48 |          0 |          3 |         51 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\StartForm\components\Intro.tsx          | TypeScript JSX     |         24 |          0 |          4 |         28 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\StartForm\components\NextButton.tsx     | TypeScript JSX     |         36 |          0 |          4 |         40 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\StartForm\components\StartPage.tsx      | TypeScript JSX     |        108 |          2 |         10 |        120 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\StartForm\pagesdata.tsx                 | TypeScript JSX     |         58 |          0 |          1 |         59 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\pages\widgets\PopHint.tsx                     | TypeScript JSX     |         20 |          0 |          4 |         24 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\react-app-env.d.ts                            | TypeScript         |          0 |          1 |          1 |          2 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\reportWebVitals.ts                            | TypeScript         |         13 |          0 |          3 |         16 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\src\setupTests.ts                                 | TypeScript         |          1 |          4 |          1 |          6 |
+| d:\大四\前端开发实习学习准备\Frontend-projects\wiredcourse\wiredcourse2\tsconfig.json                                     | JSON with Comments |         26 |          0 |          1 |         27 |
+| Total                                                                                                         |                    |     19,451 |         42 |        214 |     19,707 |
++---------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+

@@ -1,4 +1,8 @@
-import BG from "../../assets/bg.png";
+import BG01 from "../../assets/stratpage/01.png";
+import BG02 from "../../assets/stratpage/02.png";
+import BG03 from "../../assets/stratpage/03.png";
+import BG04 from "../../assets/stratpage/04.png";
+
 export const pagedata = [
     {
       title: "现在开始设计您的课程吧！",
@@ -8,7 +12,7 @@ export const pagedata = [
         eg: "例如：小学三年级",
       },
       intro: null,
-      img: BG,
+      img: BG01,
     },
     {
       title: null,
@@ -25,7 +29,7 @@ export const pagedata = [
           "例2：“城市规划”：这个大概念涉及到如何设计和管理一个城市，以满足居民的需求和利益。在这个项目中，学生可以学习城市规划原则、人口统计数据、交通规划和社区参与等相关知识，然后将这些知识应用到他们自己的城市规划方案中。",
         ],
       },
-      img: BG,
+      img: BG02,
     },
     {
       title: null,
@@ -35,7 +39,7 @@ export const pagedata = [
         eg: "例如：让学生了解城市规划的基本原则",
       },
       intro: null,
-      img: BG,
+      img: BG03,
     },
     {
       title: null,
@@ -50,6 +54,6 @@ export const pagedata = [
           "在PBL教学法中，驱动性问题应该是开放式的、具有挑战性的，并且与现实世界相关。",
         ],
       },
-      img: BG,
+      img: BG04,
     },
   ];

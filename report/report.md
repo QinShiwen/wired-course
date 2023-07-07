@@ -3,7 +3,17 @@
 ## 系统功能分析
 ### 路由数据模型
 ```ts
-
+[
+  {
+    name: "设计课程",
+    path: "./",
+    component: CourseDesign,
+    icon1: designIcon1,
+    icon2: designIcon2,
+    active: true,
+  },
+  ...
+]
 ```
 
 ## 备课系统
@@ -29,24 +39,23 @@
 - 课程数据模型
 ```ts
 {
-    //当前展示的课程
-    "presentcourse":1   //第几个版本
-    //总体课程数据
-    "coursedata":[{  //记录每一个版本
-        //存放本次记录prompt的数据
+    "presentcourse":1   //present version
+    // All version data store
+    "coursedata":[{  // Record each version
+        // Prompt data store
         "prompt-data":{
-            "concept":"",  //大概念
-            "grade":"",  //年级
-            "questions":""  //驱动性问题
+            "concept":"",  // main concept
+            "grade":"",  // grade
+            "target":"", // target 
+            "questions":""  // driven question
         }
-        //该prompt版本下的结果数据
+        // Course data store
         "course-content":{
-            //用数组记录该部分的不同版本
-            "part-1":""   //课程导入
-            "part-2":"", //教学目标
-            "part-3":"", //教学方案
-            "part-4":"", //教学步骤
-            "part-5":""  //评估与展示
+            "part-1":""   // Course guideline
+            "part-2":"", // Teaching target
+            "part-3":"", // Teaching method
+            "part-4":"", // Teaching step
+            "part-5":""  // Evaluation and presentation
         }
     }]
 }
@@ -170,15 +179,11 @@ testcourse[i] = marked.parse(testcourse[i])
 
 
 ### 问题与解决方案
+#### 课程设计系统
+1. 嵌套路由
 
-将ant-design的消息提示窗包装成一个单独的组件时出现了以下问题：
-
-```
-Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons: 
-1. You might have mismatching versions of React and the renderer (such as React DOM) 
-2. You might be breaking the Rules of Hooks 
-3. You might have more than one copy of React in the same app
-```
+2. 部署路由跳转问题
+####
 
 但奇怪的是我并没有在组件中或是外面使用hooks
 
