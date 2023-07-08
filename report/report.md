@@ -1,4 +1,6 @@
 # 基于 GPT 模型的备课平台
+Logic flow:
+landing page -> guidance -> design course
 
 ## 系统功能分析
 ### 路由数据模型
